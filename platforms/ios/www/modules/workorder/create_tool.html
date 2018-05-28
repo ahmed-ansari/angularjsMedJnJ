@@ -1,0 +1,111 @@
+<ion-view title='{{"workorder.create_tool.createTool" | translate}}'>
+<ion-nav-buttons side="right">
+      <div syncup></div>
+        <div offline></div>
+        <div username></div>
+    </ion-nav-buttons>
+    <ion-content>
+        <div class="create-tool">
+            <div class="row detail-top-blue-banner white-btm-border contact-detail">
+                <div class="col">
+                    <h3>{{"workorder.create_tool.createTool" | translate}}</h3>
+                </div>
+            </div>
+
+            <form name="createTool.createToolForm" novalidate="">
+                <div class="row">
+                    <div class="col">
+                        
+                        <label class="item-input item-floating-label">
+                            <span class="input-label">{{"workorder.create_tool.toolName" | translate}}</span>
+                            <input type="text" ng-model="createTool.toolName">
+                        </label>
+
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <label class="item-input item-floating-label">
+                            <span class="input-label">{{"workorder.create_tool.description" | translate}}</span>
+                            <textarea name="" id="" cols="30" rows="5" ng-model="createTool.description"></textarea>
+                        </label>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col pos_rel">
+                        <label class="item-input item-floating-label prodLabel">
+                            <span class="input-label">{{"workorder.create_tool.product" | translate}}</span>
+                            <input type="text" id="create_tool_product" name="create_tool_product" ng-model="createTool.productName">
+                            <input type="hidden" ng-model="createTool.prodId"/>
+                        </label>
+                        <img src="assets/images/search_icon.png" class="search_icon" ng-click="createTool.loadProducts()"></img>
+                        
+                    </div>
+                    <div class="form-errors" ng-messages="createTool.createToolForm.create_tool_product.$error" ng-show='createTool.createToolForm.create_tool_product.$dirty'>
+                            <div class="form-error" ng-message="required">{{"workorder.create_tool.fieldRequired" | translate}} <i class="ion-information-circled"></i> </div>
+                        </div>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <label class="item-input item-floating-label">
+                            <span class="input-label">{{"workorder.create_tool.specification1" | translate}}</span>
+                            <textarea name="" id="" cols="30" rows="5" ng-model="createTool.spec1"></textarea>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <label class="item-input item-floating-label">
+                            <span class="input-label">{{"workorder.create_tool.specification2" | translate}}</span>
+                            <textarea name="" id="" cols="30" rows="5" ng-model="createTool.spec2"></textarea>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <label class="item-input item-floating-label">
+                            <span class="input-label">{{"workorder.create_tool.specification3" | translate}}</span>
+                            <textarea name="" id="" cols="30" rows="5" ng-model="createTool.spec3"></textarea>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col images">
+                        <div class = "input-label">
+                            {{"workorder.create_tool.source" | translate}}
+                        </div>
+                        <select name="source" id="source" class="select_parent_width custom-select" ng-model="createTool.source">
+                            <option value>{{"workorder.create_tool.none" | translate}}</option>
+                            <option value="External">{{"workorder.create_tool.external" | translate}}</option>
+                            <option value="Internal">{{"workorder.create_tool.internal" | translate}}</option>
+                        </select>
+                    </div>
+                </div> 
+
+                <div class="row">
+                    <div class="col">
+                        <input type="submit" class="button button-positive" value='{{"workorder.create_tool.save" | translate}}' ng-click="createTool.saveToolForm(createTool.createToolForm)">
+                    </div>
+                    <div class="col">
+                        <button class="button button-outline  button-assertive" ng-click="createTool.backToActivityList()">
+                            {{"workorder.create_tool.cancel" | translate}}
+                        </button>
+                    </div>
+                    <div class="col"></div>
+                    <div class="col"></div>
+                </div>
+
+
+
+            </form>
+
+        </div>
+    </ion-content>
+</ion-view>

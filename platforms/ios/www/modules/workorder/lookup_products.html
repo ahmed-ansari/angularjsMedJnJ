@@ -1,0 +1,63 @@
+<ion-modal-view>
+    <ion-header-bar>
+        <button ng-click="closeModal()" class="button button-icon icon"> <i class="ion-close size-12" ></i></button>
+        <h1 class="title" style="padding-left: 30px;">{{"workorder.lookup_products.selectProduct" | translate}}</h1>
+    <!--<h1 class="title">Select Product</h1>
+        <span ng-click="closeModal()">X</span>-->
+	</ion-header-bar>
+    <ion-content>
+        <div class="bar bar-header item-input-inset" style="position: relative;">
+            <label class="item-input-wrapper">
+                <i class="icon ion-ios-search placeholder-icon"></i>
+                <input type="search" placeholder='{{"workorder.lookup_products.productName" | translate}}' ng-model="installAsset.searchproductname">
+            </label>
+            <i class="icon ion-close-round" ng-click="installAsset.searchproductname = ''" ng-show="installAsset.searchproductname.length > 0" style="position: absolute;top: 6px;"></i>
+            <button class="button button-positive" ng-click="installAsset.searchProduct();">
+                Search
+            </button>
+        </div>
+        <div class="card" ng-if="installAsset.searhproductError">
+          <div class="item item-text-wrap">
+            {{installAsset.searhproductError}}
+          </div>
+        </div>
+         <ion-list ng-if="installAsset.Products">
+	         <ion-item>
+	                <div class="row">
+	                    <div class="col item-text-wrap"><b>{{"workorder.lookup_products.productName" | translate}}</b></div>
+	                    <div class="col item-text-wrap"><b>{{"workorder.lookup_products.productPartName" | translate}}</b></div>
+	                    <div class="col item-text-wrap"><b>{{"workorder.lookup_products.repairSite" | translate}}</b></div>
+	                    <div class="col item-text-wrap"><b>{{"workorder.lookup_products.isPart" | translate}}</b></div>
+	                    <div class="col item-text-wrap"><b>{{"workorder.lookup_products.status" | translate}}</b></div>
+	                    <div class="col item-text-wrap"><b>{{"workorder.lookup_products.sourceStatusName" | translate}}</b></div>
+	                </div>
+	            </ion-item>
+            <ion-item ng-repeat="product in installAsset.Products" >
+                <div class="row">
+                    <div class="col">
+                        <a href="#" ng-click="installAsset.selectProduct(product.Id, product.Name)">{{product.Name}}</a>
+                    </div>
+                    <div class="col">
+                    	{{product.MedConnect__Product_Part_Number__c}}
+                    </div> 
+                    <div class="col">
+                    	{{product.MedConnect__Repair_Site__c}}
+                    </div> 
+                    <div class="col">
+                    	{{product.MedConnect__Is_Part__c}}
+                    </div>
+                    <div class="col">
+                    	{{product.MedConnect__Status__c}}
+                    </div>
+                    <div class="col">
+                    	{{product.Source_System_Name_MDSR__c}}
+                    </div>
+                </div>
+            </ion-item>
+        </ion-list>
+        <div class="card" ng-show="installAsset.no_product">
+            <div class="item item-text-wrap">
+                <p>{{"workorder.lookup_products.noRecordsFound" | translate}}</p>
+            </div>
+    </ion-content>
+</ion-modal-view>

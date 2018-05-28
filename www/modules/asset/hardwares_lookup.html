@@ -1,0 +1,30 @@
+<ion-modal-view>
+    <ion-header-bar>
+        <button ng-click="closeModal()" class="button button-icon icon"> <i class="ion-close size-12" ></i></button>
+        <h1 class="title" style="padding-left: 30px;">{{"asset.hardwares-lookup.selectHardware"|translate}}</h1>
+    	 <!--<h1 class="title">Select Hardware</h1>
+        <span ng-click="closeModal()">X</span>-->
+	</ion-header-bar>
+    <ion-content>
+        <div class="searchDivBox search-bar">
+            <label class="item-input-wrapper textbox-search searchDivBox wid-92">
+                <i class="icon ion-search placeholder-icon"></i>
+                <input type="search" placeholder='{{"asset.hardwares-lookup.searchHardware"|translate}}' ng-model="assetCreate.searchhardware" class="width-100">
+            </label> <i class="icon ion-close-round" ng-click="assetCreate.searchhardware = ''" ng-show="assetCreate.searchhardware.length > 0"></i>
+        </div>
+        <ion-list>
+            <ion-item ng-repeat="hardware in assetCreate.hardwares | filter:assetCreate.searchhardware">
+                <div class="row">
+                    <div class="col">
+                        <a href="#" ng-click="assetCreate.select_the_hardware(hardware.Id, hardware.Name)">{{hardware.Name}}</a>
+                    </div>
+                </div>
+            </ion-item>
+        </ion-list>
+        <div class="card" ng-show="(assetCreate.hardwares | filter:assetCreate.searchhardware).length==0">
+            <div class="item item-text-wrap">
+                <p>{{"asset.hardwares-lookup.noHardwareFound" | translate }}</p>
+            </div>
+        </div>
+    </ion-content>
+</ion-modal-view>

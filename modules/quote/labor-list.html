@@ -1,0 +1,42 @@
+<ion-list ng-show="singleQuote.labours.length !== 0">
+    <ion-item>
+        <div class="row titleHdr">
+            <div class="col ellipsis"><b>{{"quote.labour-list.activity-type" | translate}}</b></div>
+            <div class="col ellipsis"><b>{{"quote.labour-list.hours-worked" | translate}}</b></div>
+            <div class="col"><b>{{"quote.labour-list.rate" | translate}}</b></div>
+            <div class="col"><b>{{"quote.labour-list.discount" | translate}}</b></div>
+            <div class="col ellipsis"><b>{{"quote.labour-list.discount-type" | translate}}</b></div>
+            <div class="col ellipsis"><b>{{"quote.labour-list.gross-line-amount" | translate}}</b></div>
+            <div class="col ellipsis"><b>{{"quote.labour-list.line-amount" | translate}}</b></div>
+            <div class="col"><b>{{"quote.labour-list.billable" | translate}}</b></div>
+            <div class="col"></div>
+        </div>
+    </ion-item>
+    <ion-scroll class="accScroll" direction="y">
+        <ion-item ng-repeat="labour in singleQuote.labours">
+            <div class="row">
+                <div class="col">
+                    <!-- <a ng-href="#/app/quote-labour/{{labour.Id}}" ng-show="labour.Id"> -->
+                    <span class="ellipsis">{{labour.MedConnect__Activity_Type__c}}</span>
+                    <!-- </a> -->
+                </div>
+                <div class="col">{{labour.MedConnect__Hours_Worked__c}}</div>
+                <div class="col">{{labour.MedConnect__Rate__c}}</div>
+                <div class="col">{{labour.MedConnect__Discount__c}}</div>
+                <div class="col">{{labour.MedConnect__Discount_Type__c}}</div>
+                <div class="col">{{labour.MedConnect__Gross_Line_Amount__c}}</div>
+                <div class="col">{{labour.MedConnect__Line_Amount__c}}</div>
+                <div class="col">{{labour.MedConnect__Billable__c}}</div>
+                <div class="col">
+                         <a href="#/app/add-quote-labour/{{labour.Id}}/{{labour.MedConnect__Quote__c}}/{{labour.MedConnect__Quote__r.Name}}" ng-hide="singleQuote.sign"><i class="icon ion-edit"></i></a>    
+                </div>
+            </div>
+        </ion-item>
+    </ion-scroll>
+</ion-list>
+
+<div class="card" ng-show="singleQuote.labours.length == 0">
+    <div class="item item-text-wrap">
+        {{"quote.labour-list.no-labours-found" | translate}}
+    </div>
+</div>

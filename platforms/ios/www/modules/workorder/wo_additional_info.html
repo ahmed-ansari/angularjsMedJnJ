@@ -1,0 +1,24 @@
+<div class="list">
+    <div class="item">
+        {{"workorder.wo-additional-info.date-reported" | translate}}<span class="item-note" ng-bind="::singleWorkOrder.WO.MedConnect__Date_Reported__c  | date:'dd/MM/yyyy' "></<span>
+    </div>
+    <div class="item">
+        {{"workorder.wo-additional-info.work-order-date" | translate}} <span class="item-note" ng-bind="::singleWorkOrder.WO.MedConnect__Date__c  | date:'dd/MM/yyyy' "></span>
+    </div>
+    <div class="item">
+        {{"workorder.wo-additional-info.test-standards" | translate}} <span class="item-note" ng-bind="::singleWorkOrder.WO.MedConnect__Test_Standards__c">
+        </span>
+    </div>
+    <div class="item">
+        {{"workorder.wo-additional-info.test-standards-description" | translate}}<span class="item-note" ng-bind="::singleWorkOrder.WO.MedConnect__Test_Standards_Description__c">
+        </span>
+    </div>
+    <div class="item">
+        {{"workorder.wo-additional-info.inspection-standards" | translate}} <span class="item-note" ng-bind="::singleWorkOrder.WO.MedConnect__Inspection_Standards__c">
+        </span>
+    </div>
+    <div class="item">
+        {{"workorder.wo-additional-info.inspection-standards-description" | translate}}<span class="item-note" ng-bind="::singleWorkOrder.WO.MedConnect__Inspection_Description__c">
+        </span>
+    </div>
+</div>

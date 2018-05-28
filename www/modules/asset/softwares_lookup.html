@@ -1,0 +1,30 @@
+<ion-modal-view>
+    <ion-header-bar>
+        <button ng-click="closeModal()" class="button button-icon icon"> <i class="ion-close size-12" ></i></button>
+        <h1 class="title" style="padding-left: 30px;">{{"asset.softwares_lookup.selectSoftware" | translate}}</h1>
+     <!--<h1 class="title">Select Software</h1>
+        <span ng-click="closeModal()">X</span>-->
+	</ion-header-bar>
+    <ion-content>
+        <div class="searchDivBox search-bar">
+            <label class="item-input-wrapper textbox-search searchDivBox wid-92">
+                <i class="icon ion-search placeholder-icon"></i>
+                <input type="search" placeholder='{{"asset.softwares_lookup.searchSoftware" | translate}}' ng-model="assetCreate.searchsoftware" class="width-100">
+            </label> <i class="icon ion-close-round" ng-click="assetCreate.searchsoftware = ''" ng-show="assetCreate.searchsoftware.length > 0"></i>
+        </div>
+        <ion-list>
+            <ion-item ng-repeat="software in assetCreate.softwares | filter:assetCreate.searchsoftware">
+                <div class="row">
+                    <div class="col">
+                        <a href="#" ng-click="assetCreate.select_the_software(software.Id, software.Name)">{{software.Name}}</a>
+                    </div>
+                </div>
+            </ion-item>
+        </ion-list>
+        <div class="card" ng-show="(assetCreate.softwares | filter:assetCreate.searchsoftware).length==0">
+            <div class="item item-text-wrap">
+                <p>{{"asset.softwares_lookup.noSoftwareFound" | translate}}</p>
+            </div>
+        </div>
+    </ion-content>
+</ion-modal-view>

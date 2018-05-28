@@ -1,0 +1,99 @@
+<ion-view view-title='{{"workorder.apply_tb.technicalBulletin" | translate}}'>
+    <ion-nav-buttons side="right">
+        <div syncup></div>
+        <div offline></div>
+        <div username></div>
+    </ion-nav-buttons>
+    <ion-content scroll="false">
+        <div class="row detail-top-blue-banner white-btm-border module-detail activity_detail">
+            <div class="col">
+                <h3 style="margin: 20px 0;">{{::tb.workOrderName}}</h3>
+            </div>
+            <br><br>
+        </div>
+        <div class="tab-container">
+            <tab-slide-box>
+                <div class="tsb-icons">
+                    <div class="tsb-ic-wrp">
+                        <ion-scroll direction="x" class="tsb-hscroll">
+                            <a href="javascript:;" class="ion-home1">{{"workorder.apply_tb.availableTechBulletin" | translate}}</a>
+                            <a href="javascript:;" class="ion-home1">{{"workorder.apply_tb.appliedTechBulletin" | translate}}</a>
+                        </ion-scroll>
+                    </div>
+                </div>
+                <ion-slide-box show-pager="false" on-slide-changed="slideHasChanged($index)">
+                    <ion-slide>
+                        <ion-scroll direction="y" class="scroll-height">
+                            <ion-list ng-show="tb.available.length > 0">
+                                <ion-item class="cntTitle">
+                                    <div class="row">
+                                        <div class="col"><b>{{"workorder.apply_tb.action" | translate}}</b></div>
+                                        <div class="col"><b>{{"workorder.apply_tb.name" | translate}}</b></div>
+                                        <div class="col"><b>{{"workorder.apply_tb.priority" | translate}}</b></div>
+                                        <div class="col"><b>{{"workorder.apply_tb.content" | translate}}</b></div>
+                                        <div class="col"><b>{{"workorder.apply_tb.validFrom" | translate}}</b></div>
+                                        <div class="col"><b>{{"workorder.apply_tb.validTill" | translate}}</b></div>
+                                        <div class="col"><b>{{"workorder.apply_tb.timeFrame" | translate}}</b></div>
+                                        <div class="col ellipsis"><b>{{"workorder.apply_tb.applicableCountries" | translate}}</b></div>
+                                    </div>
+                                </ion-item>
+                                <ion-scroll direction="y" class="scroll-heightCt">
+                                    <ion-item ng-repeat="avail in tb.available">
+                                        <div class="row">
+                                            <div class="col item-text-wrap"><a href="#" ng-click="tb.applytb(avail.Id)">{{"workorder.apply_tb.apply" | translate}}</a></div>
+                                            <div class="col item-text-wrap">{{avail.Name}}</div>
+                                            <div class="col item-text-wrap">{{avail.MedConnect__Priority__c}}</div>
+                                            <div class="col item-text-wrap">{{avail.MedConnect__Content__c}}</div>
+                                            <div class="col item-text-wrap">{{avail.MedConnect__Valid_From__c | date:'dd/MM/yyyy'}}</div>
+                                            <div class="col item-text-wrap">{{avail.MedConnect__Valid_Till__c | date:'dd/MM/yyyy'}}</div>
+                                            <div class="col item-text-wrap">{{avail.Timeframe_MDSR__c}}</div>
+                                            <div class="col item-text-wrap">{{avail.Applicable_Countries_MDSR__c}}</div>
+                                        </div>
+                                    </ion-item>
+                                </ion-scroll>
+                            </ion-list>
+                            <div class="card" ng-show="tb.available.length == 0">
+                                <div class="item item-text-wrap">
+                                    {{"workorder.apply_tb.noRecordsFound" | translate}}
+                                </div>
+                            </div>
+                        </ion-scroll>
+                    </ion-slide>
+                    <ion-slide>
+                        <ion-list ng-show="tb.applied.length > 0">
+                            <ion-item class="cntTitle">
+                                <div class="row">
+                                    <div class="col"><b>{{"workorder.apply_tb.name" | translate}}</b></div>
+                                        <div class="col"><b>{{"workorder.apply_tb.priority" | translate}}</b></div>
+                                        <div class="col"><b>{{"workorder.apply_tb.content" | translate}}</b></div>
+                                        <div class="col"><b>{{"workorder.apply_tb.validFrom" | translate}}</b></div>
+                                        <div class="col"><b>{{"workorder.apply_tb.validTill" | translate}}</b></div>
+                                        <div class="col"><b>{{"workorder.apply_tb.timeFrame" | translate}}</b></div>
+                                        <div class="col ellipsis"><b>{{"workorder.apply_tb.applicableCountries" | translate}}</b></div>
+                                </div>
+                            </ion-item>
+                            <ion-scroll direction="y" class="scroll-heightCt">
+                                <ion-item ng-repeat="appl in tb.applied">
+                                    <div class="row">
+                                        <div class="col item-text-wrap">{{appl.Name}}</div>
+                                        <div class="col item-text-wrap">{{appl.MedConnect__Priority__c}}</div>
+                                        <div class="col item-text-wrap">{{appl.MedConnect__Content__c}}</div>
+                                        <div class="col item-text-wrap">{{appl.MedConnect__Valid_From__c | date:'dd/MM/yyyy'}}</div>
+                                        <div class="col item-text-wrap">{{appl.MedConnect__Valid_Till__c | date:'dd/MM/yyyy'}}</div>
+                                        <div class="col item-text-wrap">{{appl.Timeframe_MDSR__c}}</div>
+                                        <div class="col item-text-wrap">{{appl.Applicable_Countries_MDSR__c}}</div>
+                                    </div>
+                                </ion-item>
+                            </ion-scroll>
+                        </ion-list>
+                        <div class="card" ng-show="tb.applied.length == 0">
+                            <div class="item item-text-wrap">
+                                {{"workorder.apply_tb.noRecordsFound" | translate}}
+                            </div>
+                        </div>
+                    </ion-slide>
+                </ion-slide-box>
+            </tab-slide-box>
+        </div>
+    </ion-content>
+</ion-view>

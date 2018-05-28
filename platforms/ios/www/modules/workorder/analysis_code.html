@@ -1,0 +1,76 @@
+<ion-view title='{{"workorder.analysis_code.analysisCode" | translate}}'>
+<ion-nav-buttons side="right">
+        <div syncup></div>
+        <div offline></div>
+        <div username></div>
+    </ion-nav-buttons>
+	<ion-content>
+		<h3 class="padMedLeft">{{"workorder.analysis_code.applicableCodes" | translate}}</h3>
+		<ion-list ng-show="analysisCode.applicableCodes.length > 0">
+            <ion-item>
+                <div class="row">
+                	<div class="col"><b>{{"workorder.analysis_code.sNo" | translate}}</b></div>
+                    <div class="col"><b>{{"workorder.analysis_code.codeName" | translate}}</b></div>
+                    <div class="col"><b>{{"workorder.analysis_code.codeNumber" | translate}}</b></div>
+                    <div class="col"><b>{{"workorder.analysis_code.codeLevel" | translate}}</b></div>
+                </div>
+            </ion-item>
+            <ion-item ng-repeat="data in analysisCode.applicableCodes">
+                <div class="row">
+                	<div class="col">
+                		<ion-checkbox ng-model="analysisCode.isApplicableChecked[$index]" value={{data}} ng-show="data.showChecked"></ion-checkbox>
+                	</div>
+                    <div class="col" ng-if="data.MedConnect__Codes__r != null"><a href="#/app/child-code/{{data.Id}}">{{data.Name}}</a></div>
+                    <div class="col" ng-if="data.MedConnect__Codes__r == null">{{data.Name}}</div>
+                    <div class="col">{{data.MedConnect__Code_Number__c}}</div>
+                    <div class="col">{{data.MedConnect__Code_Level__c}}</div>
+                </div>
+            </ion-item>
+        </ion-list>
+
+        <div class="card" ng-show="analysisCode.applicableCodes.length == 0">
+            <div class="item item-text-wrap">
+                {{"workorder.analysis_code.noRecordsFound" | translate}}
+            </div>
+        </div>
+
+        <br/>
+
+        <h3 class="padMedLeft">{{"workorder.analysis_code.availableCodes" | translate}}</h3>
+		<ion-list ng-show="analysisCode.availableCodes.length > 0">
+            <ion-item>
+                <div class="row">
+                	<div class="col item-text-wrap"><b>{{"workorder.analysis_code.sNo" | translate}}</b></div>
+                    <div class="col item-text-wrap"><b>{{"workorder.analysis_code.codeName" | translate}}</b></div>
+                    <div class="col item-text-wrap"><b>{{"workorder.analysis_code.codeNumber" | translate}}</b></div>
+                    <div class="col item-text-wrap"><b>{{"workorder.analysis_code.codeLevel" | translate}}</b></div>
+                </div>
+            </ion-item>
+            <ion-item ng-repeat="data in analysisCode.availableCodes">
+                <div class="row">
+                	<div class="col" ng-if="!data.showChecked">
+                		<ion-checkbox ng-model="analysisCode.isAvailableChecked[$index]" value={{data}} ng-show="data.showChecked"></ion-checkbox>
+                	</div>
+                    <div class="col" ng-if="data.showChecked">
+                		<ion-checkbox class="item-checkbox1" ng-model="analysisCode.isApplicableChecked[$index]" value={{data}} ng-show="data.showChecked"></ion-checkbox>
+                	</div>
+                    <div class="col item-text-wrap" ng-if="data.MedConnect__Codes__r != null"><a href="#/app/child-code/{{data.Id}}">{{data.Name}}</a></div>
+                    <div class="col item-text-wrap" ng-if="data.MedConnect__Codes__r == null">{{data.Name}}</div>
+                    <div class="col item-text-wrap">{{data.MedConnect__Code_Number__c}}</div>
+                    <div class="col item-text-wrap">{{data.MedConnect__Code_Level__c}}</div>
+                </div>
+            </ion-item>
+        </ion-list>
+
+        <div class="card" ng-show="analysisCode.availableCodes.length == 0">
+            <div class="item item-text-wrap">
+                {{"workorder.analysis_code.noRecordsFound" | translate}}
+            </div>
+        </div>
+
+	</ion-content>
+	<ion-footer-bar class="wo-footer"> 
+        <button class="button button-balanced height-60 medBtn" ng-click="analysisCode.assignAnalysisCode()">{{"workorder.analysis_code.assign" | translate}}</button>
+        <button class="button button-clear button-outline button-assertive leftMargin relative" ng-click="analysisCode.cancelAnalysisCode()">{{"workorder.analysis_code.cancel" | translate}}</button>
+    </ion-footer-bar>
+</ion-view>

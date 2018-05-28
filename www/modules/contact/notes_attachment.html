@@ -1,0 +1,58 @@
+<div class="tabs_head">
+    <h3>Notes</h3></div>
+<div class="notes" ng-show="singlecontact.acc_notes != null">
+    <ion-list>
+        <ion-item>
+            <div class="row">
+                <div class="col item-text-wrap"><b>{{"contact.notes_attachment.type" | translate}}</b></div>
+                <div class="col item-text-wrap"><b>{{"contact.notes_attachment.title" | translate}}</b></div>
+                <div class="col item-text-wrap"><b>{{"contact.notes_attachment.related_to" | translate}}</b></div>
+                <div class="col item-text-wrap"><b>{{"contact.notes_attachment.last_modified" | translate}}</b></div>
+                <div class="col item-text-wrap"><b>{{"contact.notes_attachment.created_by" | translate}}</b></div>
+            </div>
+        </ion-item>
+        <ion-item ng-repeat="acc_note in singlecontact.acc_notes.records">
+            <div class="row">
+                <div class="col item-text-wrap">{{acc_note.attributes.type}}</div>
+                <div class="col item-text-wrap"><a href="#/app/show-note/{{acc_note.Id}}">{{acc_note.Title}}</a></div>
+                <div class="col item-text-wrap">{{acc_note.Parent.Name}}</div>
+                <div class="col item-text-wrap">{{acc_note.LastModifiedDate | date : 'medium' : 'UTC'}}</div>
+                <div class="col item-text-wrap">{{acc_note.CreatedBy.Name}}</div>
+            </div>
+        </ion-item>
+    </ion-list>
+</div>
+    <div class="card" ng-show="singlecontact.acc_notes == null">
+        <div class="item item-text-wrap">
+            {{"contact.notes_attachment.no_notes_available" | translate}}
+        </div>
+    </div>
+<div class="tabs_head">
+    <h3>{{"contact.notes_attachment.attachment" | translate}}</h3></div>
+<div class="attachments" ng-show="singlecontact.acc_attachments != null">
+    <ion-list>
+        <ion-item>
+            <div class="row">
+                <div class="col item-text-wrap"><b>{{"contact.notes_attachment.type" | translate}}</b></div>
+                <div class="col item-text-wrap"><b>{{"contact.notes_attachment.title" | translate}}</b></div>
+                <div class="col item-text-wrap"><b>{{"contact.notes_attachment.related_to" | translate}}</b></div>
+                <div class="col item-text-wrap"><b>{{"contact.notes_attachment.last_modified" | translate}}</b></div>
+                <div class="col item-text-wrap"><b>{{"contact.notes_attachment.created_by" | translate}}</b></div>
+            </div>
+        </ion-item>
+        <ion-item ng-repeat="acc_attachment in singlecontact.acc_attachments.records">
+            <div class="row">
+                <div class="col item-text-wrap">{{acc_attachment.attributes.type}}</div>
+                <div class="col item-text-wrap"><a href="#/app/show-attachment/{{acc_attachment.Id}}">{{acc_attachment.Name}}</a></div>
+                <div class="col item-text-wrap">{{acc_attachment.Parent.Name}}</div>
+                <div class="col item-text-wrap">{{acc_attachment.LastModifiedDate}}</div>
+                <div class="col item-text-wrap">{{acc_attachment.CreatedBy.Name}}</div>
+                          </div>
+        </ion-item>
+    </ion-list>
+</div>
+    <div class="card" ng-show="singlecontact.acc_attachments == null">
+        <div class="item item-text-wrap">
+            {{"contact.notes_attachment.no_attachments_available" | translate}}
+        </div>
+    </div>

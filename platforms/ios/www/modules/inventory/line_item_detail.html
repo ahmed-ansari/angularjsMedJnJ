@@ -1,0 +1,67 @@
+<ion-view title="{{'inventory.line_item_detail.inventory' | translate}}">
+    <ion-nav-buttons side="right">
+        <div syncup></div>
+        <div offline></div>
+        <div username></div>
+    </ion-nav-buttons>
+    <ion-content>
+        <div class="row detail-top-blue-banner white-btm-border contact-detail NameHdr">
+            <div class="col">
+                <h2 ng-bind="lineitem.detail.Name"></h2>
+            </div>
+             <div class="col">
+                <p>{{"inventory.line_item_detail.inventory_id" | translate}}</p>
+                <span ng-bind="lineitem.detail.MedConnect__Inventory__r.Name"></span>
+            </div>
+        </div>
+        <div class="tab-container">
+            <tab-slide-box>
+                <div class="tsb-icons">
+                    <div class="tsb-ic-wrp">
+                        <ion-scroll direction="x" class="tsb-hscroll">
+                            <a href="javascript:;" class="ion-home1">{{"inventory.line_item_detail.general_info" | translate}}</a>
+                        </ion-scroll>
+                    </div>
+                </div>
+                <ion-slide-box>
+                    <ion-slide>
+                        <ion-scroll>
+                            <div class="list">
+                                <div class="item">
+                                    {{"inventory.line_item_detail.status" | translate}}<span class="item-note">{{getVariableDataFromObject(lineitem.detail, 'Status__c')}}</span>
+                                </div>
+                                <div class="item">
+                                   {{"inventory.line_item_detail.serial_number" | translate}}<span class="item-note">{{getVariableDataFromObject(lineitem.detail, 'Serial_No__c')}}</span>
+                                </div>
+                                <div class="item">
+                                    {{"inventory.line_item_detail.quantity" | translate}}<span class="item-note">{{getVariableDataFromObject(lineitem.detail, 'Quantity__c')}}</span>
+                                </div>
+                                <div class="item">
+                                    {{"inventory.line_item_detail.product" | translate}}<span class="item-note"><a href="#/app/products/{{lineitem.detail.MedConnect__Product__c}}">{{lineitem.detail.MedConnect__Product__r.Name}}</a></span>
+                                </div>
+                                <div class="item">
+                                  {{"inventory.line_item_detail.lot_master" | translate}}<span class="item-note">{{lineitem.detail.MedConnect__Lot_Master__r.Name}}</span>
+                                </div>
+                                <div class="item">
+                                    {{"inventory.line_item_detail.batch_master" | translate}}<span class="item-note">{{lineitem.detail.MedConnect__Batch_No__r.Name}}</span>
+                                </div>
+                              <div class="item">
+                                   {{"inventory.line_item_detail.asset" | translate}}<span class="item-note"><a href="#/app/assets/{{lineitem.detail.MedConnect__Asset__c}}">{{lineitem.detail.MedConnect__Asset__r.Name}}</a></span>
+                                </div>
+                                <div class="item">
+                                    {{"inventory.line_item_detail.condition" | translate}}<span class="item-note">{{getVariableDataFromObject(lineitem.detail, 'Condition__c')}}</span>
+                                </div>
+                                  <div class="item">
+                                    {{"inventory.line_item_detail.created_by" | translate}}<span class="item-note">{{lineitem.detail.CreatedBy.Name}}</span>
+                                </div>
+                                  <div class="item">
+                                    {{"inventory.line_item_detail.last_modified_by" | translate}}<span class="item-note">{{lineitem.detail.LastModifiedBy.Name}}</span>
+                                </div>
+                            </div>
+                        </ion-scroll>
+                    </ion-slide>
+                </ion-slide-box>
+                </tab-slide-box>
+        </div>
+    </ion-content>
+</ion-view>

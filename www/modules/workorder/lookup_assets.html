@@ -1,0 +1,68 @@
+<ion-modal-view>
+    <ion-header-bar>
+        <button ng-click="closeModal()" class="button button-icon icon"> <i class="ion-close size-12" ></i></button>
+        <h1 class="title" style="padding-left: 30px;">{{"workorder.lookup_assets.select-asset" | translate}}</h1>
+    <!--<h1 class="title">Select Asset</h1>
+        <span ng-click="closeModal()">X</span>-->
+	</ion-header-bar>
+    <ion-content>
+        <div class="bar bar-header item-input-inset" style="position: relative;">
+            <label class="item-input-wrapper">
+                <i class="icon ion-ios-search placeholder-icon"></i>
+                <input type="search" placeholder='{{"workorder.lookup_assets.paceholder" | translate}}' ng-model="installAsset.searchassetname">
+            </label>
+            <i class="icon ion-close-round" ng-click="installAsset.searchassetname = ''" ng-show="installAsset.searchassetname.length > 0" style="position: absolute;top: 6px;"></i>
+            <button class="button button-positive" ng-click="installAsset.searchAsset();">
+                Search
+            </button>
+        </div>
+        <div class="card" ng-if="installAsset.searchAssetError">
+            <div class="item item-text-wrap">
+                {{installAsset.searchAssetError}}
+            </div>
+        </div>
+        <ion-list ng-if="installAsset.Assets">
+            <ion-item>
+                <div class="row">
+                    <div class="col item-text-wrap"><b>{{"workorder.lookup_assets.assetName" | translate}}</b></div>
+                    <div class="col item-text-wrap"><b>{{"workorder.lookup_assets.serialNo" | translate}}</b></div>
+                    <div class="col item-text-wrap"><b>{{"workorder.lookup_assets.product" | translate}}</b></div>
+                    <!-- <div class="col item-text-wrap"><b>{{"workorder.lookup_assets.locationAccount" | translate}}</b></div> -->
+                    <div class="col item-text-wrap"><b>{{"workorder.lookup_assets.lotNumber" | translate}}</b></div>
+                    <div class="col item-text-wrap"><b>{{"workorder.lookup_assets.batchNumber" | translate}}</b></div>
+                    <!-- <div class="col item-text-wrap"><b>{{"workorder.lookup_assets.installedDate" | translate}}</b></div>
+                    <div class="col item-text-wrap"><b>{{"workorder.lookup_assets.installedBy" | translate}}</b></div> -->
+                </div>
+            </ion-item>
+            <ion-item ng-repeat="asset in installAsset.Assets">
+                <div class="row ">
+                    <div class="col item-text-wrap ">
+                        <a href="# " ng-click="installAsset.selectAsset(asset.Id, asset.Name) ">{{asset.Name}}</a>
+                    </div>
+                    <div class="col item-text-wrap ">
+                        {{asset.MedConnect__Serial_No__c}}
+                    </div>
+                    <div class="col item-text-wrap ">
+                        {{asset.MedConnect__Product__r.Name}}
+                    </div>
+                    <div class="col item-text-wrap ">
+                        {{asset.MedConnect__Lot_Master1__r.Name}}
+                    </div>
+                    <div class="col item-text-wrap ">
+                        {{asset.MedConnect__Batch_Master__r.Name}}
+                    </div>
+                   <!--  <div class="col item-text-wrap ">
+                        {{asset.MedConnect__Installed_Date__c}}
+                    </div>
+                    <div class="col item-text-wrap ">
+                        {{asset.MedConnect__Installed_By__r.Name}}
+                    </div> -->
+                </div>
+            </ion-item>
+        </ion-list>
+        <div class="card" ng-show="installAsset.no_asset">
+            <div class="item item-text-wrap">
+                <p>{{"workorder.lookup_assets.no-records-found" | translate}}</p>
+            </div>
+    </ion-content>
+</ion-modal-view>

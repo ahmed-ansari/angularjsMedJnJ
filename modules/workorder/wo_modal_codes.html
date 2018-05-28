@@ -1,0 +1,29 @@
+<ion-modal-view>
+   <ion-header-bar>
+       <button ng-click="closeModal()" class="button button-icon icon"> <i class="ion-close size-12" ></i></button>
+       <h1 class = "title" style="padding-left: 15px;">{{"workorder.wo_modal_codes.select-child-analysis-codes" | translate}}</h1>
+   <!--<h1 class = "title">Select Child Analysis Codes</h1>
+      <span ng-click="closeModal()">X</span> -->
+   </ion-header-bar>
+	
+   <ion-content>
+      	<ion-list>
+      		<ion-item>
+                <div class="row">
+                	<div class="col"><b>{{"workorder.wo_modal_codes.s-no" | translate}}</b></div>
+                    <div class="col"><b>{{"workorder.wo_modal_codes.code-name" | translate}}</b></div>
+                    <div class="col"><b>{{"workorder.wo_modal_codes.code-number" | translate}}</b></div>
+                    <div class="col"><b>{{"workorder.wo_modal_codes.code-level" | translate}}</b></div>
+                </div>
+            </ion-item>
+  		</ion-list>
+
+      <div class="card" ng-show="createTool.prodRecords.length  == 0">
+        <div class="item item-text-wrap">
+            <p>{{"workorder.wo_modal_codes.no-product-lookup-found" | translate}}</p>
+        </div>
+      </div>
+
+   </ion-content>
+   
+</ion-modal-view>

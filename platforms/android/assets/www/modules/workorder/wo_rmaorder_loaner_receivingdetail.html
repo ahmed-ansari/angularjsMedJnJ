@@ -1,0 +1,18 @@
+<div class="list">
+      <div class="item">
+        {{"workorder.wo_rmaorder_loaner_receivingdetail.received-by" | translate}} 
+        <span class="item-note" > {{getVariableDataFromObject(singleLoaner.Loaner_data,'Received_by__r','Name')}}</span>
+    </div>
+    <div class="item">
+         {{"workorder.wo_rmaorder_loaner_receivingdetail.received-date" | translate}} 
+        <span class="item-note" > {{getVariableDataFromObject(singleLoaner.Loaner_data,'Received_Date_Time__c')}}</span>
+      
+    </div>
+    <div class="item">
+        {{"workorder.wo_rmaorder_loaner_receivingdetail.receiving-status" | translate}}
+         <span class="item-note" > {{getVariableDataFromObject(singleLoaner.Loaner_data,'Receiving_Status__c')}}</span>
+       
+    </div>
+     
+</div>
+

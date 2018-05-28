@@ -1,0 +1,209 @@
+<ion-view title="{{'workorder.uninstall_asset.repairAnalysisUninstallation' | translate}}">
+    <ion-content>
+        <div class="install-asset">
+            <div class="row detail-top-blue-banner white-btm-border module-detail">
+                <div class="col">
+                    <h3>{{"workorder.uninstall_asset.uninstall-asset" | translate}} {{uninstallAsset.RAData.Name}}</h3>
+                </div>
+            </div>
+            <div class="subHeader">
+                <b>{{"workorder.uninstall_asset.selections" | translate}}</b>
+            </div>
+            <form name="uninstallAsset.installForm" novalidate="" class="installForm">
+                <div class="row">
+                    <div class="col label-center">
+                        {{"workorder.uninstall_asset.source-inventory" | translate}}
+                    </div>
+                    <div class="col pos_rel">
+                        <label class="item-input item-floating-label prodLabel" ng-class="{ 'has-error' : uninstallAsset.installForm.src_inventory.$invalid && uninstallAsset.installForm.src_inventory.$dirty}">
+                            <span class="input-label"></span>
+                            <input type="text"  name="src_inventory" ng-model="uninstallAsset.srcInventory" class="install_asset" ng-disabled="true">
+                         
+                        </label>
+                        <!-- <img src="assets/images/search_icon.png" class="search_icon" ng-click="uninstallAsset.loadSrcInventory()"></img> -->
+                        <div class="form-errors" ng-messages="uninstallAsset.installForm.src_inventory.$error" ng-show='uninstallAsset.installForm.$submitted || uninstallAsset.installForm.src_inventory.$dirty'>
+                            <div class="form-error" ng-message="required">{{"workorder.uninstall_asset.fieldRequired" | translate}} <i class="ion-information-circled"></i> </div>
+                        </div>
+                    </div>
+                    <div class="col col-10 padding-top-25">
+                        <button class="button-icon icon" ng-click="uninstallAsset.loadSrcInventory()"><i class="ion-search size-24" ></i></button>
+                    </div>
+                    <div class="col label-center">
+                        <p class="leftMargin">{{"workorder.uninstall_asset.destinationInventory" | translate}}</p>
+                    </div>
+                    <div class="col pos_rel">
+                        <label class="item-input item-floating-label prodLabel" ng-class="{ 'has-error' : uninstallAsset.installForm.dest_inventory.$invalid && uninstallAsset.installForm.dest_inventory.$dirty}">
+                            <span class="input-label"></span>
+                            <input type="text" name="dest_inventory" ng-model="uninstallAsset.destInventory"  required ng-disabled="true">
+                        </label>
+                        <!-- <img src="assets/images/search_icon.png" class="search_icon" ng-click="uninstallAsset.loadDestInventory()"></img> -->
+                           <div class="form-errors" ng-messages="uninstallAsset.installForm.dest_inventory.$error" ng-show='uninstallAsset.installForm.$submitted || uninstallAsset.installForm.dest_inventory.$dirty'>
+                            <div class="form-error" ng-message="required">{{"workorder.uninstall_asset.fieldRequired" | translate}} <i class="ion-information-circled"></i> </div>
+                        </div>
+                    </div>
+                    <div class="col col-10 padding-top-25">
+                        <button class="button-icon icon" ng-click="uninstallAsset.loadDestInventory()"><i class="ion-search size-24" ></i></button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col label-center">
+                        {{"workorder.uninstall_asset.materialBOM" | translate}}
+                    </div>
+                    <div class="col pos_rel">
+                        <label class="item-input item-floating-label prodLabel" ng-class="{ 'has-error' : uninstallAsset.installForm.install_asset_materialBOM.$invalid && uninstallAsset.installForm.install_asset_materialBOM.$dirty}">
+                            <span class="input-label"></span>
+                            <input type="text"  name="materialBOM_itemName" ng-model="uninstallAsset.materialBOMName" ng-disabled="true">
+                        </label>
+                        <!-- <img src="assets/images/search_icon.png" class="search_icon" ng-click="uninstallAsset.loadBOM()"></img> -->
+                    </div>    
+                    <div class="col col-10 padding-top-25">
+                        <button class="button-icon icon" ng-click="uninstallAsset.loadBOM()"><i class="ion-search size-24" ></i></button>
+                    </div>
+                    <div class="col label-center">
+                        <p class="leftMargin">{{"workorder.uninstall_asset.inventory-line-item" | translate}}</p>
+                    </div>
+                    <div class="col pos_rel">
+                        <label class="item-input item-floating-label prodLabel" ng-class="{ 'has-error' : uninstallAsset.installForm.install_asset_src_inventory.$invalid && uninstallAsset.installForm.install_asset_src_inventory.$dirty}">
+                            <span class="input-label"></span>
+                            <input type="text" id="install_asset_inventory" name="install_asset_inventory" ng-model="uninstallAsset.inventoryItem" class="install_asset"  ng-disabled="true">                           
+                        </label>
+                        <!-- <img src="assets/images/search_icon.png" class="search_icon" ng-click="uninstallAsset.loadInventoryLineItem()"></img> -->
+                       <!--  <div class="form-errors" ng-messages="uninstallAsset.installForm.install_asset_inventory.$error" ng-show='uninstallAsset.installForm.$submitted || uninstallAsset.installForm.install_asset_inventory.$dirty'>
+                            <div class="form-error" ng-message="required">This field is required <i class="ion-information-circled"></i> </div>
+                        </div> -->
+                    </div>
+                    <div class="col col-10 padding-top-25">
+                        <button class="button-icon icon" ng-click="uninstallAsset.loadInventoryLineItem()"><i class="ion-search size-24" ></i></button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col label-center">
+                        {{"workorder.uninstall_asset.asset" | translate}}
+                    </div>
+                    <div class="col pos_rel">
+                        <label class="item-input item-floating-label prodLabel" ng-class="{ 'has-error' : uninstallAsset.installForm.install_asset_asset.$invalid && uninstallAsset.installForm.install_asset_asset.$dirty}">
+                            <span class="input-label"></span>
+                            <input type="text" id="install_asset_asset" name="install_asset_asset" ng-model="uninstallAsset.AssetName" class="install_asset" ng-disabled="true">
+                            <input type="hidden" ng-model="uninstallAsset.AssetId" />
+                        </label>
+                        <!-- <img src="assets/images/search_icon.png" class="search_icon" ng-click="uninstallAsset.loadAssets()"></img> -->
+                    </div>
+                    <div class="col col-10 padding-top-25">
+                        <button class="button-icon icon" ng-click="uninstallAsset.loadAssets()"><i class="ion-search size-24" ></i></button>
+                    </div>
+                <div class="col label-center">
+                        {{"workorder.uninstall_asset.serialized-port" | translate}}
+                    </div>
+                    <div class="col pos_rel">
+                        <label class="item-input item-floating-label prodLabel" ng-class="{ 'has-error' : uninstallAsset.installForm.seriaized_port.$invalid && uninstallAsset.installForm.seriaized_port.$dirty}">
+                            <span class="input-label"></span>
+                            <input type="text" name="seriaized_port" ng-model="uninstallAsset.seriailized_port_name" class="install_asset" ng-disabled="true">
+                        </label>
+                        <!-- <img src="assets/images/search_icon.png" class="search_icon" ng-click="uninstallAsset.load_seriailized_port()"></img> -->
+                    </div>
+                    <div class="col col-10 padding-top-25">
+                        <button class="button-icon icon" ng-click="uninstallAsset.load_seriailized_port()"><i class="ion-search size-24" ></i></button>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col label-center">
+                        {{"workorder.uninstall_asset.parent-material-BOM-item" | translate}}
+                    </div>
+                    <div class="col pos_rel">
+                        <label class="item-input item-floating-label prodLabel" ng-class="{ 'has-error' : uninstallAsset.installForm.parent_materialBOM_itemName.$invalid && uninstallAsset.installForm.parent_materialBOM_itemName.$dirty}">
+                            <span class="input-label"></span>
+                            <input type="text" name="parent_materialBOM_itemName" ng-model="uninstallAsset.parent_materialBOM_itemName" class="install_asset" ng-disabled="true">
+                        </label>
+                        <!-- <img src="assets/images/search_icon.png" class="search_icon" ng-click="uninstallAsset.loadParentMaterialBOMItems()"></img> -->
+                    </div>    
+                    <div class="col col-10 padding-top-25">
+                        <button class="button-icon icon" ng-click="uninstallAsset.loadParentMaterialBOMItems()"><i class="ion-search size-24" ></i></button>
+                    </div>
+                    <div class="col label-center">
+                        <p class="leftMargin">{{"workorder.uninstall_asset.material-BOM-item" | translate}}</p>
+                    </div>
+                    <div class="col pos_rel">
+                        <label class="item-input item-floating-label prodLabel" ng-class="{ 'has-error' : uninstallAsset.installForm.materialBOM_itemName.$invalid && uninstallAsset.installForm.materialBOM_itemName.$dirty}">
+                            <span class="input-label"></span>
+                            <input type="text" name="materialBOM_itemName" ng-model="uninstallAsset.materialBOM_itemName"  ng-disabled="true">
+                        </label>
+                        <!-- <img src="assets/images/search_icon.png" class="search_icon" ng-click="uninstallAsset.loadMaterialBOMItems()"></img>                        -->
+                    </div>
+                    <div class="col col-10 padding-top-25">
+                        <button class="button-icon icon" ng-click="uninstallAsset.loadMaterialBOMItems()"><i class="ion-search size-24" ></i></button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col label-center">
+                        {{"workorder.uninstall_asset.lot_number" | translate}}
+                    </div>
+                    <div class="col pos_rel">
+                        <label class="item-input item-floating-label prodLabel">
+                            <span class="input-label"></span>
+                            <input type="text" id="install_asset_lot" name="install_asset_lot" ng-model="uninstallAsset.lotName" class="install_asset" ng-disabled="true">
+                        </label>
+                        <!-- <img src="assets/images/search_icon.png" class="search_icon" ng-click="uninstallAsset.loadLot()"></img> -->
+                    </div>
+                    <div class="col col-10 padding-top-25">    
+                        <button class="button-icon icon" ng-click="uninstallAsset.loadLot()"><i class="ion-search size-24" ></i></button>
+                    </div>
+                    <div class="col label-center">
+                        <p class="leftMargin">{{"workorder.uninstall_asset.product" | translate}}</p>
+                    </div>
+                    <div class="col pos_rel">
+                        <label class="item-input item-floating-label prodLabel">
+                            <span class="input-label"></span>
+                            <input type="text" id="install_asset_productName" name="install_asset_productName" ng-model="uninstallAsset.productName" class="install_asset" ng-disabled="true">
+                        </label>
+                        <!-- <img src="assets/images/search_icon.png" class="search_icon" ng-click="uninstallAsset.loadProducts()"></img> -->
+                    </div>
+                    <div class="col col-10 padding-top-25">
+                        <button class="button-icon icon" ng-click="uninstallAsset.loadProducts()"><i class="ion-search size-24" ></i></button>
+                    </div>
+                </div>
+                <div class="row">                
+                    <div class="col">
+                        <label class="item-input item-floating-label prodLabel" ng-class="{ 'has-error' : uninstallAsset.installForm.install_asset_src_inventory.$invalid && uninstallAsset.installForm.install_asset_src_inventory.$dirty}">
+                            <span class="input-label"> {{"workorder.uninstall_asset.quantity" | translate}}</span>
+                            <input type="tel" id="install_asset_quantity" name="install_asset_quantity" ng-model="uninstallAsset.formData.quantity" class="install_asset" ng-pattern="/^[0-9]{1,9}$/" required>
+                        </label>
+                        <div class="form-errors" ng-messages="uninstallAsset.installForm.install_asset_quantity.$error" ng-show='uninstallAsset.installForm.$submitted || uninstallAsset.installForm.install_asset_quantity.$dirty'>
+                            <div class="form-error" ng-message="pattern"> {{"workorder.uninstall_asset.invalidNumber" | translate}} <i class="ion-information-circled"></i> </div>
+                            <div class="form-error" ng-message="required">{{"workorder.uninstall_asset.fieldRequired" | translate}} <i class="ion-information-circled"></i> </div>
+                        </div>
+                    </div>
+                      <div class="col">
+                        <label class="item-input item-floating-label" ng-class="{ 'has-error' : uninstallAsset.installForm.performed_on.$invalid && uninstallAsset.installForm.performed_on.$dirty}">
+                            <span class="input-label">{{"workorder.uninstall_asset.performed-on" | translate}}</span>
+                            <input type="datetime-local" name="performed_on" ng-model="uninstallAsset.formData.performed_on">
+                        </label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col images">
+                        <select name="condition" id="condition" class="select_parent_width custom-select" ng-model="uninstallAsset.formData.condition" required>
+                            <option value="">{{"workorder.uninstall_asset.condition" | translate}}</option>
+                            <option value="Usable">{{"workorder.uninstall_asset.usable" | translate}}</option>
+                            <option value="Unusable">{{"workorder.uninstall_asset.unusable" | translate}}</option>
+                        </select>
+                        <div class="form-errors" ng-messages="uninstallAsset.installForm.condition.$error" ng-show='uninstallAsset.installForm.$submitted || uninstallAsset.installForm.condition.$dirty'>
+                            <div class="form-error" ng-message="required"> {{"workorder.uninstall_asset.fieldRequired" | translate}} <i class="ion-information-circled"></i> </div>
+                        </div>
+                    </div>
+                  <div class="col"></div>
+                </div>
+                <div class="row buttonTop">
+                    <div class="col">
+                        <button class="button themeBtn" ng-disabled="disableBtns" ng-click="uninstallAsset.install(uninstallAsset.installForm)"> {{"workorder.uninstall_asset.uninstall" | translate}} </button>
+                    </div>
+                    <div class="col">
+                        <span class="button button-outline button-assertive" ng-click="uninstallAsset.backToRA()"> {{"workorder.uninstall_asset.cancel" | translate}} </span>
+                    </div>
+                    <div class="col"></div>
+                    <div class="col"></div>
+                </div>
+            </form>
+        </div>
+    </ion-content>
+</ion-view>

@@ -1,0 +1,30 @@
+.menu {
+	background: $navBgColor;
+	.bar-header {
+		background: $navBgColor;
+		h1 { color:#fff; }
+	}
+	.item {
+		border : none;
+		background: $navBgColor;
+		&.active-link {
+			.item-content {
+				background: $activeLink;
+			}
+		}
+	}
+	.item-content {
+		background: $navBgColor;
+		color:#fff;
+		.menu-icons {
+			margin-right: 8%;
+		}
+	}
+}
+.no-border {
+	border:none;
+}
+
+.wid-auto {
+	width:auto !important;
+}

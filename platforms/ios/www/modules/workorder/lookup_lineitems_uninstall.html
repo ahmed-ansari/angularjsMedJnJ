@@ -1,0 +1,62 @@
+<ion-modal-view style="width:94%; left: 3%; right: 3%;">
+   <ion-header-bar>
+     <button ng-click="closeModal()" class="button button-icon icon"> <i class="ion-close size-12" ></i></button>
+      <h1 class = "title">{{"workorder.lookup_lineitems_uninstall.inventory-line-items" | translate}}</h1>
+   <!--<h1 class = "title">Inventory Line Items</h1>
+      <span ng-click="closeModal()">X</span>-->
+   </ion-header-bar>
+	
+  <ion-content>
+         <div class="searchDivBox">  
+          <label class="item-input-wrapper textbox-search searchDivBox">
+              <i class="icon ion-search placeholder-icon"></i>
+              <input type="search" placeholder='{{"workorder.lookup_lineitems_uninstall.search-inventory-line-items" | translate}}' ng-model="invLineItems" class="search-input">
+          </label>
+          <i class="icon ion-close-round search-cross" ng-click="invLineItems = ''" ng-show="invLineItems.length > 0"></i>
+        </div>
+
+      	<ion-list>
+          <ion-item>
+            <div class="row">
+                <div class="col item-text-wrap"><b>{{"workorder.lookup_lineitems_uninstall.name" | translate}}</b></div>
+                <div class="col item-text-wrap"><b>{{"workorder.lookup_lineitems_uninstall.asset" | translate}}</b></div>
+                <div class="col item-text-wrap"><b>{{"workorder.lookup_lineitems_uninstall.product" | translate}}</b></div>
+                <div class="col item-text-wrap"><b>{{"workorder.lookup_lineitems_uninstall.lot-number" | translate}}</b></div>
+                <div class="col item-text-wrap"><b>{{"workorder.lookup_lineitems_uninstall.quantity" | translate}}</b></div>
+            </div> 
+          </ion-item>
+      		<ion-item ng-repeat="lineItem in uninstallAsset.lineItemRecords |filter:invLineItems| orderBy: 'Name'"">
+      			<div class="row">
+              <div class="col item-text-wrap">
+                <a href="#" ng-click="uninstallAsset.fetchLineItem(lineItem.Id, lineItem.Name)">{{lineItem.Name}}</a>
+              </div>
+              
+              <div class="col item-text-wrap">
+                {{lineItem.MedConnect__Asset__r.Name}}
+              </div> 
+ 
+              <div class="col item-text-wrap">
+                {{lineItem.MedConnect__Product__r.Name}}
+              </div>  
+
+              <div class="col item-text-wrap">
+                {{lineItem.MedConnect__Lot_Master__r.Name}}
+              </div>  
+
+              <div class="col item-text-wrap">
+                {{lineItem.MedConnect__Quantity__c}}
+              </div>  
+
+            </div>
+      		</ion-item>
+  		  </ion-list>
+
+      <div class="card" ng-show="uninstallAsset.lineItemRecords.length == 0">
+        <div class="item item-text-wrap">
+            <p>{{"workorder.lookup_lineitems_uninstall.no-inventory-line-items-found" | translate}}</p>
+        </div>
+      </div>
+
+   </ion-content>
+   
+</ion-modal-view>

@@ -1,0 +1,27 @@
+<br>
+<br>
+<ion-scroll class="accScrollGI" direction="y">
+    <div class="color-legends">
+        <ul class="legend">
+            <li><span class="gen-acc"></span>{{"account.account-chart.generalAccount"| translate}}</li>
+            <li><span class="idn-grp-name"></span>{{"account.account-chart.IDNGroupName"| translate}}</li>
+        </ul>
+        <br>
+        <ul class="legend">
+            <li><span class="curr-acc"></span> {{"account.account-chart.currentlyViewedAccount"| translate}}</li>
+            <li><span class="bill-acc"></span>{{"account.account-chart.billingAccount"| translate}}</li>
+        </ul>
+        <ul class="legend">
+            <li><span class="pur-acc"></span>{{"account.account-chart.purchaseAccount"| translate}}</li>
+            <li><span class="ship-acc"></span>{{"account.account-chart.shippingAccount"| translate}}</li>
+        </ul>
+    </div>
+<br>
+<br>
+<div id="Account_chart_div"></div>
+</ion-scroll>
+<div class="card" ng-show="Object.keys(singleaccount.acc_hierarchy).length == 0">
+    <div class="item item-text-wrap">
+        <p>{{"account.account-chart.noDataforChart"| translate}}</p>
+    </div>
+</div>

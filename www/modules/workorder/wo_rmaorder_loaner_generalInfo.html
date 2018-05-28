@@ -1,0 +1,20 @@
+<div class="list">
+    <div class="item">
+        {{"workorder.wo_rmaorder_loaner_generalInfo.loaner-item-name" | translate}} 
+        <span class="item-note" ng-bind="::singleLoaner.Loaner_data.Name"></<span>
+    </div>
+      <div class="item">
+        {{"workorder.wo_rmaorder_loaner_generalInfo.rma-order-name" | translate}} 
+        <span class="item-note" > {{getVariableDataFromObject(singleLoaner.Loaner_data,'RMA_Order__r','Name')}}</span>
+    </div>
+
+    <div class="item">
+        {{"workorder.wo_rmaorder_loaner_generalInfo.asset" | translate}} 
+        <span class="item-note" > {{getVariableDataFromObject(singleLoaner.Loaner_data,'Asset__r','Name')}}</span>
+    </div>
+    <div class="item">
+        {{"workorder.wo_rmaorder_loaner_generalInfo.order-status" | translate}}
+        <span class="item-note" > {{getVariableDataFromObject(singleLoaner.Loaner_data,'Order_Status__c')}}</span>
+    </div>     
+</div>
+

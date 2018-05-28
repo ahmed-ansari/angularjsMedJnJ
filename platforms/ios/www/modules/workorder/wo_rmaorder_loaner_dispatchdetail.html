@@ -1,0 +1,27 @@
+<div class="list">
+
+
+    
+    <div class="item">
+        {{"workorder.wo_rmaorder_loaner_dispatchdetail.is-dispatched" | translate}} 
+         <span class="item-note" > {{getVariableDataFromObject(singleLoaner.Loaner_data,'Is_Dispatched__c')}}</span>
+        </span>
+       
+    </div>
+    <div class="item">
+         {{"workorder.wo_rmaorder_loaner_dispatchdetail.dispatch-date" | translate}} 
+          <span class="item-note" > {{getVariableDataFromObject(singleLoaner.Loaner_data,'Dispatch_date__c')}}</span>
+        </span>
+        
+    </div>
+
+    <div class="item">
+        {{"workorder.wo_rmaorder_loaner_dispatchdetail.dispatch-status" | translate}} 
+        
+        <span class="item-note" > {{getVariableDataFromObject(singleLoaner.Loaner_data,'Dispatch_Status__c')}}</span>
+        </span>
+    </div>
+    
+     
+</div>
+

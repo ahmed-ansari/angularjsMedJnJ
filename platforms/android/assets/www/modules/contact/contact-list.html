@@ -1,0 +1,67 @@
+<ion-view title='{{"contact.contact-list.contacts" | translate}}'>
+    <ion-nav-buttons side="left">
+        <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+        <div syncup></div>
+        <div offline></div>
+        <div username></div>
+    </ion-nav-buttons>
+    <ion-header-bar class="bar-light bar-subheader" style="display: block">
+        <div class="bar bar-header item-input-inset listHdrBar">
+             <!-- <div class="centerAlign noMarginTop">Filtered by +/- <span>{{::filterDays}}</span> days</div> -->
+            <div class=" row searchDivBox">
+                <label class="item-input-wrapper textbox-search searchDivBox">
+                    <i class="icon ion-search placeholder-icon"></i>
+                    <input type="search" placeholder='{{"contact.contact-list.search_contact" | translate}}' ng-model="contactlist.searchcontact">
+                </label>
+                <i class="icon ion-close-round" ng-click="contactlist.searchcontact = ''" ng-show="contactlist.searchcontact.length > 0"></i>
+            </div>
+        </div>
+        <div class="row mt0">
+                <div class="col"></div>
+                <div class="col">
+                    <div class="centerAlign noMarginTop">{{"contact.contact-list.filtered_by" | translate}} +/- <span>{{::filterDays}}</span> days</div>
+                </div>
+                <div class="col text-right">
+                    <button class="button button-small button-positive" ui-sref="app.add-contact({contactId : 0})"> {{"contact.contact-list.new_contact" | translate}} </button>
+                     <!-- <a class="button button-small button-positive" href="#/app/add-contact/1"> New Contact</a> -->
+                </div>
+            </div>
+    </ion-header-bar>
+    <ion-content class="has-header">
+        <br>
+        <br>
+        <br>
+        <br>
+        <ion-list>
+            <ion-item ng-repeat="contact in contactlist.contacts | filter:contactlist.searchcontact| orderBy: 'Name'" class="item-avatar-left1 item-icon-right1 item-button-right1 item-module">
+                <div class="row">
+                    <div class="col col-70">
+                        <a ng-href="#/app/contacts/{{contact.Id}}" class="module-div">
+                            <h2 href="#/app/contacts/{{contact.Id}}" ng-bind="contact.Name"> </h2>
+                            <p class="module-name" ng-bind="contact.Account.Name | NullCheck"></p>
+                            <p class="module-street " ng-bind="contact.MailingStreet | NullCheck"></p>
+                            <p class="module-number" ng-bind="contact.MobilePhone | NullCheck"></p>
+                        </a>
+                    </div>
+                    <div class="col col-9">
+                        <a class="button" ng-href="#/app/contact-map/{{contact.Id}}" ">
+                            <i class="icon ion-ios-location "></i>
+                        </a>
+                    </div>
+                </div>
+
+            </ion-item>
+            <div class="card " ng-show="(contactlist.contacts | filter:contactlist.searchcontact).length==0 ">
+                <div class="item item-text-wrap " ng-bind="contactlist.no_contact ">                   
+                </div>
+            </div>
+
+            <div class="card " ng-show="contactlist.nocontacts ">
+                <div class="item item-text-wrap " ng-bind="contactlist.no_contact ">                   
+                </div>
+            </div>
+        </ion-list>
+    </ion-content>
+</ion-view>

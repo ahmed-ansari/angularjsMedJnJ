@@ -1,0 +1,22 @@
+<ion-modal-view>
+   <ion-header-bar>
+       <button ng-click="closeModal()" class="button button-icon icon"> <i class="ion-close size-12" ></i></button>
+      <h1 class = "title" style="padding-left: 30px;">{{"asset.filter_asset.filter" | translate}}</h1>
+    <!--<h1 class = "title">Filter</h1>
+      <span ng-click="closeModal()">X</span>-->
+   </ion-header-bar>	
+   <ion-content>
+      <ion-list>
+        <ion-radio ng-model="assetlist.filterContact" ng-value="1">1 {{"asset.filter_asset.day" | translate}}</ion-radio>
+        <ion-radio ng-model="assetlist.filterContact" ng-value="3">3 {{"asset.filter_asset.days" | translate}}</ion-radio>
+        <ion-radio ng-model="assetlist.filterContact" ng-value="7">7 {{"asset.filter_asset.days" | translate}}</ion-radio>
+        <ion-radio ng-model="assetlist.filterContact" ng-value="15">15 {{"asset.filter_asset.days" | translate}}</ion-radio>
+        <ion-radio ng-model="assetlist.filterContact" ng-value="30">30 {{"asset.filter_asset.days" | translate}}</ion-radio>
+        <ion-radio ng-model="assetlist.filterContact" ng-value="60">60 {{"asset.filter_asset.days" | translate}}</ion-radio>
+  		</ion-list>
+      <div class="row filterBtn">
+        <button class="button button-block button-positive" style="margin: auto;" ng-click="assetlist.filterAssetList()">{{"asset.filter_asset.filter" | translate}}</button>
+      </div>
+   </ion-content>
+   
+</ion-modal-view>

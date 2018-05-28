@@ -1,0 +1,63 @@
+<ion-modal-view style="width:94%; left: 3%; right: 3%;">
+   <ion-header-bar>
+       <button ng-click="closeModal()" class="button button-icon icon"> <i class="ion-close size-12" ></i></button>
+       <h1 class = "title" style="padding-left: 30px;">{{"workorder.wo_ra_srs_inventory.source-inventory" | translate}}</h1>
+   <!--<h1 class = "title">Source Inventory</h1>
+      <span ng-click="closeModal()">X</span> -->
+   </ion-header-bar>
+	
+   <ion-content>
+
+        <div class="searchDivBox">  
+          <label class="item-input-wrapper textbox-search searchDivBox">
+              <i class="icon ion-search placeholder-icon"></i>
+              <input type="search" placeholder='{{"workorder.wo_ra_srs_inventory.search-source-inventory" | translate}}' ng-model="srcInvSearch" class="search-input">
+          </label>
+          <i class="icon ion-close-round search-cross" ng-click="srcInvSearch = ''" ng-show="srcInvSearch.length > 0"></i>
+        </div>
+
+      	<ion-list>
+          <ion-item>
+            <div class="row">
+                <div class="col item-text-wrap"><b>{{"workorder.wo_ra_srs_inventory.name" | translate}}</b></div>
+                <div class="col item-text-wrap"><b>{{"workorder.wo_ra_srs_inventory.owner-account" | translate}}</b></div>
+                <div class="col item-text-wrap"><b>{{"workorder.wo_ra_srs_inventory.owner-technician" | translate}}</b></div>
+                <div class="col item-text-wrap"><b>{{"workorder.wo_ra_srs_inventory.technician-user" | translate}}</b></div>
+                <div class="col item-text-wrap"><b>{{"workorder.wo_ra_srs_inventory.location" | translate}}</b></div>
+            </div> 
+          </ion-item>
+      		<ion-item ng-repeat="srcInventory in installAsset.srcInventoryRecords |filter:srcInvSearch| orderBy: 'Name'"">
+      			<div class="row">
+              <div class="col item-text-wrap">
+                <a href="#" ng-click="installAsset.fetchSrcInventory(srcInventory.Id, srcInventory.Name)">{{srcInventory.Name}}</a>
+              </div>
+              
+              <div class="col item-text-wrap">
+                {{srcInventory.MedConnect__Owner_Account__r.Name}}
+              </div> 
+ 
+              <div class="col item-text-wrap">
+                {{srcInventory.MedConnect__Owner_Technician__r.Name}}
+              </div>  
+
+              <div class="col item-text-wrap">
+                {{srcInventory.MedConnect__Technician_User__c}}
+              </div>  
+
+              <div class="col item-text-wrap">
+                {{srcInventory.MedConnect__Location__r.Name}}
+              </div>  
+
+            </div>
+      		</ion-item>
+  		  </ion-list>
+
+      <div class="card" ng-show="installAsset.srcInventory.length == 0">
+        <div class="item item-text-wrap">
+            <p>{{"workorder.wo_ra_srs_inventory.no-source-inventory-found" | translate}}</p>
+        </div>
+      </div>
+
+   </ion-content>
+   
+</ion-modal-view>

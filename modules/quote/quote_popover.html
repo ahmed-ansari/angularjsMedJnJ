@@ -1,0 +1,11 @@
+	<ion-popover-view>
+    <ion-content>
+        <div class="list" ng-click="singleQuote.popover.hide()">
+            <a class="item" ng-show="!singleQuote.sign" href="#/app/add-quote/{{singleQuote.quote.MedConnect__Work_Order__c}}/{{singleQuote.quoteId}}/norevise" ><i class="icon ion-edit"></i> {{"quote.quote_popover.quote" | translate}}</a>
+            <a class="item" ng-show="singleQuote.sign && !singleQuote.revise" href="#/app/add-quote/{{singleQuote.quote.MedConnect__Work_Order__c}}/{{singleQuote.quoteId}}/revise" ><i class="icon ion-forward"></i> {{"quote.quote_popover.revise" | translate}}</a>
+            <a class="item" ng-show="!singleQuote.sign" href="#/app/add-quote-expense/null/{{singleQuote.quoteId}}/{{singleQuote.quote.Name}}" ><i class="icon ion-android-add-circle"></i> {{"quote.quote_popover.expense" | translate}}</a>
+            <a class="item" ng-show="!singleQuote.sign" href="#/app/add-quote-labour/null/{{singleQuote.quoteId}}/{{singleQuote.quote.Name}}" ><i class="icon ion-android-add-circle"></i> {{"quote.quote_popover.labor" | translate}}</a>
+            <a class="item" ng-show="!singleQuote.sign" href="#/app/add-quote-material/null/{{singleQuote.quoteId}}/{{singleQuote.workOrderID}}/{{singleQuote.quote.Name}}/" ><i class="icon ion-android-add-circle"></i> {{"quote.quote_popover.material" | translate}}</a>     
+        </div>
+    </ion-content>
+</ion-popover-view>

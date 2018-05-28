@@ -1,0 +1,43 @@
+<div class="list">
+    
+    <div class="item">
+        {{"workorder.wo_rmaorder_return_generalInfo.rmo-name" | translate}} 
+
+        <span class="item-note" ng-bind="::returnaction.ReturnOrder_data.Name"></<span>
+    </div>
+    <div class="item">
+        {{"workorder.wo_rmaorder_return_generalInfo.product" | translate}}
+
+        <span class="item-note" > {{getVariableDataFromObject(returnaction.ReturnOrder_data,'Product__r','Name')}}</span>
+
+    </div>
+    <div class="item">
+        {{"workorder.wo_rmaorder_return_generalInfo.order-status" | translate}}
+        
+        <span class="item-note" > {{getVariableDataFromObject(returnaction.ReturnOrder_data,'Order_Status__c')}}</span>
+    </div>
+    <div class="item">
+         {{"workorder.wo_rmaorder_return_generalInfo.order-type" | translate}} 
+
+       <span class="item-note"> {{getVariableDataFromObject(returnaction.ReturnOrder_data, 'Order_Type__c')}}
+
+
+        </span>
+    </div>
+     <div class="item">
+         {{"workorder.wo_rmaorder_return_generalInfo.udi" | translate}} 
+        
+
+          <span class="item-note" > {{getVariableDataFromObject(returnaction.ReturnOrder_data,'UDI__c')}}</span>
+        
+    </div>
+     <div class="item">
+         {{"workorder.wo_rmaorder_return_generalInfo.order-line-item" | translate}} 
+         
+         <span class="item-note" > {{getVariableDataFromObject(returnaction.ReturnOrder_data,'Order_Line_Item__r','Name')}}</span>
+        
+    </div>
+
+    
+</div>
+

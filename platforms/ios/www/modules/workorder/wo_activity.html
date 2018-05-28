@@ -1,0 +1,25 @@
+<div class="wo-activity">
+    <ion-list ng-show="singleWorkOrder.activities.length > 0">
+        <ion-item class="cntHdr">
+            <div class="row">
+                <div class="col"><b>{{"workorder.wo-activity.name" | translate}}</b></div>
+                <div class="col">{{"workorder.wo-activity.technical-bulletin" | translate}}</div>
+                <div class="col"><b>{{"workorder.wo-activity.status" | translate}}</b></div>
+            </div>
+        </ion-item>
+        <ion-scroll direction="y" class="scroll-height">
+            <ion-item ng-repeat="activity in singleWorkOrder.activities">
+                <div class="row">
+                    <div class="col"><a href="#/app/activity/{{activity.Id}}">{{activity.Name}}</a></div>
+                    <div class="col">{{activity.Technical_Bulletin_MDSR__r.Name}}</div>
+                    <div class="col"> {{activity.MedConnect__Status__c}}</div>
+                </div>
+            </ion-item>
+        </ion-scroll>
+    </ion-list>
+    <div class="card" ng-show="singleWorkOrder.activities.length == 0">
+        <div class="item item-text-wrap">
+            {{"workorder.wo-activity.no-activity-found" | translate}}
+        </div>
+    </div>
+</div>

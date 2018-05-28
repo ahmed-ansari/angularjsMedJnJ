@@ -1,0 +1,17 @@
+<div class="list">
+    <div class="item">
+        {{"workorder.wo-asset-info.asset-si-no" | translate}}<span class="item-note" ng-bind="::singleWorkOrder.WO.MedConnect__Asset_Sl_No__c"></<span>
+    </div>
+    <div class="item">
+        {{"workorder.wo-asset-info.asset" | translate}} <span class="item-note"><a href="#/app/assets/{{singleWorkOrder.WO.MedConnect__Asset__c}}">{{::singleWorkOrder.WO.MedConnect__Asset__r.Name}}</a></span>
+    </div>
+    <div class="item">
+        {{"workorder.wo-asset-info.product" | translate}} <span class="item-note"><a href="#/app/products/{{singleWorkOrder.WO.MedConnect__Product__c}}">{{::singleWorkOrder.WO.MedConnect__Product__r.Name}}</a>
+        </span>
+    </div>
+    <div class="item">
+        {{"workorder.wo-asset-info.installed-location" | translate}} <span class="item-note" ng-bind="::singleWorkOrder.WO.MedConnect__Installed_Location__c">
+        </span>
+    </div>
+   </div>
+

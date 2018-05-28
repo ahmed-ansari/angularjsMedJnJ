@@ -1,0 +1,55 @@
+<div class="list">
+    <div class="item">
+        {{"workorder.wo_rmaorder_generalInfo.rma-order-name" | translate}} 
+        <span class="item-note" ng-bind="::singleRMA.RMAorder_data.Name"></<span>
+    </div>
+    <div class="item">
+        {{"workorder.wo_rmaorder_generalInfo.rma-order-status" | translate}} 
+
+         <span class="item-note" > {{getVariableDataFromObject(singleRMA.RMAorder_data,'RMA_Order_Status__c')}}</span>
+
+    </div>
+    <div class="item">
+         {{"workorder.wo_rmaorder_generalInfo.work-order-id" | translate}}
+        
+          <span class="item-note" > {{getVariableDataFromObject(singleRMA.RMAorder_data,'Work_Order__r','Name')}}</span>
+        
+    </div>
+    <div class="item">
+         {{"workorder.wo_rmaorder_generalInfo.account" | translate}} 
+  
+       <span class="item-note item-text-wrap" > {{getVariableDataFromObject(singleRMA.RMAorder_data,'Account__r','Name')}}</span>
+
+         
+        </span>
+    </div>
+     <div class="item">
+         {{"workorder.wo_rmaorder_generalInfo.contact" | translate}} 
+        
+         <span class="item-note item-text-wrap" > {{getVariableDataFromObject(singleRMA.RMAorder_data,'Contact__r','Name')}}</span>
+
+        </span>
+    </div>
+
+    <div class="item">
+        {{"workorder.wo_rmaorder_generalInfo.service-request" | translate}}
+
+        <span class="item-note item-text-wrap" > {{getVariableDataFromObject(singleRMA.RMAorder_data,'Service_Request__r','Name')}}</span>
+        
+        
+    </div>
+    <div class="item">
+         {{"workorder.wo_rmaorder_generalInfo.incident-number" | translate}}
+        
+         <span class="item-note item-text-wrap" > {{getVariableDataFromObject(singleRMA.RMAorder_data,'Incident__r','Name')}}</span>
+        
+    </div>
+    <div class="item">
+         {{"workorder.wo_rmaorder_generalInfo.reason-for-return" | translate}} 
+
+         <span class="item-note item-text-wrap" > {{getVariableDataFromObject(singleRMA.RMAorder_data,'Reason_for_Return__c')}}</span>
+         
+        
+    </div>
+</div>
+

@@ -1,0 +1,60 @@
+<ion-view title='{{"asset.module-form.newAssetModule"| translate}}'>
+    <ion-nav-buttons side="right">
+        <div syncup></div>
+        <div offline></div>
+    </ion-nav-buttons>
+    <ion-content padding="false">
+        <div class="add-quote-expense">
+            <div class="row detail-top-blue-banner white-btm-border contact-detail">
+                <div class="col">
+                    <h3>{{"asset.module-form.newAssetModule"| translate}}</h3>
+                </div>
+            </div>
+            <br>
+            <br>
+            <form name="moduleCreate.moduleForm" novalidate="" ng-submit="moduleCreate.moduleSave(moduleCreate.moduleForm)">
+                <div class="row">
+                    <div class="col ">{{"asset.module-form.assetName"| translate}}</div>
+                    <div class="col">
+                    <!-- <a href="#/app/assets/{{moduleCreate.assetId}}"> -->
+                    {{::moduleCreate.assetName}}
+                    <!-- </a> -->
+                    </div>
+                    <div class="col"></div>
+                    <div class="col">
+                           <span class="input-label">{{"asset.module-form.moduleVersion"| translate}}</span>
+                    </div>
+                    <div class="col">
+                        <label class="item-input item-floating-label" ng-class="{ 'has-error' : moduleCreate.moduleForm.module.$invalid && moduleCreate.moduleForm.module.$dirty}" style="border-bottom: 0;padding: 0">
+                         
+                            <input type="text" name="module" ng-required="true" ng-model="moduleCreate.selected_module_name" required readonly>
+                        </label>
+                        <div class="form-errors" ng-messages="moduleCreate.moduleForm.module.$error" ng-show='moduleCreate.moduleForm.$submitted || moduleCreate.moduleForm.module.$dirty'>
+                            <div class="form-error" ng-message="required">{{"asset.module-form.fieldReq"| translate}} <i class="ion-information-circled"></i> </div>
+                        </div>
+                    </div>
+                    <div class="col col-10 pad-0 ">
+                                <span class="button ion-search icon" ng-click="moduleCreate.showModules()"></span>
+                    </div>
+                </div>
+                <div class="row">
+                     <br><br>
+                </div>
+                <div class="row">
+
+                    <div class="col">
+                        <input type="submit" class="button button-positive" value="{{'asset.module-form.save' | translate}}">
+                    </div>
+                    <div class="col">
+                        <div class="button button-outline  button-assertive" ng-click="moduleCreate.takeMeBack()">
+                            {{"asset.module-form.cancel"| translate}}
+                        </div>
+                    </div>
+                    <div class="col"></div>
+                    <div class="col"></div>
+                    <div class="col"></div>
+                    </div>
+            </form>
+        </div>
+    </ion-content>
+</ion-view>

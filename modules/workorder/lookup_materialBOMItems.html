@@ -1,0 +1,54 @@
+<ion-modal-view style="width:94%; left: 3%; right: 3%;">
+    <ion-header-bar>
+        <button ng-click="closeModal()" class="button button-icon icon"> <i class="ion-close size-12" ></i></button>
+        <h1 class="title" style="padding-left: 20px;">{{"workorder.lookup_materialBOMItems.materialBOMItems" | translate}}</h1>
+    <!--<h1 class="title">Material BOM Items</h1>
+        <span ng-click="closeModal()">X</span>-->
+	</ion-header-bar>
+    <ion-content>
+        <div class="searchDivBox">
+            <label class="item-input-wrapper textbox-search searchDivBox">
+                <i class="icon ion-search placeholder-icon"></i>
+                <input type="search" placeholder='{{"workorder.lookup_materialBOMItems.search" | translate}}' ng-model="BOMItemSearch" class="search-input">
+            </label>
+            <i class="icon ion-close-round search-cross" ng-click="BOMItemSearch = ''" ng-show="BOMItemSearch.length > 0"></i>
+        </div>
+        <ion-list>
+            <ion-item>
+                <div class="row">
+                    <div class="col item-text-wrap"><b>{{"workorder.lookup_materialBOMItems.materialBOMName" | translate}}</b></div>
+                    <div class="col item-text-wrap"><b>{{"workorder.lookup_materialBOMItems.asset" | translate}}</b></div>
+                    <div class="col item-text-wrap"><b>{{"workorder.lookup_materialBOMItems.materialBOM" | translate}}</b></div>
+                    <div class="col item-text-wrap"><b>{{"workorder.lookup_materialBOMItems.product" | translate}}</b></div>
+                </div>
+            </ion-item>
+            <ion-item ng-repeat="BOMItem in installAsset.MaterialBOMItems |filter:BOMItemSearch| orderBy: 'Name'" ">
+      			<div class="row ">
+	              <div class="col item-text-wrap ">
+	                <a href="# " ng-click="installAsset.selectMaterialBOM_item(BOMItem.Id, BOMItem.Name) ">{{BOMItem.Name}}</a>
+	              </div>
+	              
+	              <div class="col item-text-wrap ">
+	                {{BOMItem.MedConnect__Asset__r.Name}}
+	              </div> 
+	 
+	              <div class="col item-text-wrap ">
+	                {{BOMItem.MedConnect__Material_BOM__r.Name}}
+	              </div>  
+
+	              <div class="col item-text-wrap ">
+	                {{BOMItem.MedConnect__Product__r.Name}}
+	              </div>
+            </div>
+      		</ion-item>
+  		  </ion-list>
+
+      <div class="card " ng-show="installAsset.MaterialBOMItems.length==0 ">
+        <div class="item item-text-wrap ">
+            <p>{{"workorder.lookup_materialBOMItems.noMaterialBOMFound" | translate}}</p>
+        </div>
+      </div>
+
+   </ion-content>
+   
+</ion-modal-view>

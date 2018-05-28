@@ -1,0 +1,79 @@
+<ion-view view-title="Service Order">
+    <ion-nav-buttons side="right">
+        <div offline></div>
+        <div syncup></div>
+        <span class="step size-32">
+            <i class="icon ion-grid" ng-click="singleOrder.popover.show($event)"></i>        
+        </span>
+    </ion-nav-buttons>
+    <ion-content  scroll="false">
+        <div class="row detail-top-blue-banner white-btm-border module-detail">
+            <div class="col">
+                <h3 ng-bind="::singleOrder.order.Name"></h3>
+            </div>
+        </div>
+        <div class="tab-container">
+            <tab-slide-box>
+                <div class="tsb-icons">
+                    <div class="tsb-ic-wrp">
+                        <ion-scroll direction="x" class="tsb-hscroll">
+                            <a href="javascript:;" class="ion-home1">General Info</a>
+                            <a href="javascript:;" class="ion-home1">Order Line Items </a>
+                        </ion-scroll>
+                    </div>
+                </div>
+                <ion-slide-box show-pager="false" on-slide-changed="slideHasChanged($index)">
+                    <ion-slide>
+                        <div class="order-detail">
+                            <div class="list">
+                                <div class="item">
+                                    Work Order <span class="item-note" ng-bind="::singleOrder.order.MedConnect__Work_Order__r.Name"></span>
+                                </div>
+                                <div class="item">
+                                    Account <span class="item-note"><a href="#/app/accounts/{{singleOrder.order.MedConnect__Account__c}}">{{::singleOrder.order.MedConnect__Account__r.Name}}</a></span>
+                                </div>
+                                <div class="item">
+                                    Contact <span class="item-note"><a href="#/app/contacts/{{singleOrder.order.MedConnect__Contact__c}}">{{::singleOrder.order.MedConnect__Contact__r.Name}}</a></span>
+                                </div>
+                                <div class="item">
+                                    Status <span class="item-note" ng-bind="::singleOrder.order.MedConnect__Status__c"></span>
+                                </div>
+                                <div class="item">
+                                    Delivery Date <span class="item-note" ng-bind="::singleOrder.order.MedConnect__Delivery_Date__c"></span>
+                                </div>
+                                <div class="item">
+                                    Reason for Return <span class="item-note" ng-bind="::singleOrder.order.Reason_for_Return_MDSR__c" </span>
+                                </div>
+                            </div>
+                        </div>
+                    </ion-slide>
+                    <ion-slide>
+                        <ion-list ng-show="singleOrder.lineitems.length > 0">
+                            <ion-item>
+                                <div class="row">
+                                    <div class="col item-text-wrap"><b>Order Line Item Name</b></div>
+                                    <div class="col item-text-wrap"><b>Status</b></div>
+                                    <div class="col item-text-wrap"><b>Type</b></div>
+                                </div>
+                            </ion-item>
+                            <ion-scroll direction="y" class="scrollAtHt">
+                                <ion-item ng-repeat="lineitem in singleOrder.lineitems">
+                                    <div class="row">
+                                        <div class="col item-text-wrap">{{lineitem.Name}}</div>
+                                        <div class="col item-text-wrap">{{lineitem.MedConnect__LineItem_Status__c}}</div>
+                                        <div class="col item-text-wrap">{{lineitem.MedConnect__Order_Line_Type__c}}</div>
+                                    </div>
+                                </ion-item>
+                            </ion-scroll>
+                        </ion-list>
+                        <div class="card" ng-show="singleOrder.lineitems.length == 0">
+                            <div class="item item-text-wrap">
+                                No Record Found!
+                            </div>
+                        </div>
+                    </ion-slide> 
+                </ion-slide-box>
+            </tab-slide-box>
+        </div>
+    </ion-content>
+</ion-view>

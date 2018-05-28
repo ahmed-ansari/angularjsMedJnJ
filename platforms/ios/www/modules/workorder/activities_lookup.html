@@ -1,0 +1,39 @@
+<ion-modal-view>
+   <ion-header-bar>
+       <button ng-click="closeModal()" class="button button-icon icon"> <i class="ion-close size-12" ></i></button>
+       <h1 class = "title" style="padding-left: 30px;">{{"workorder.activities_lookup.activities" | translate}}</h1>
+   <!-- <h1 class = "title">Activities</h1>
+      <span ng-click="closeModal()">X</span>-->
+   </ion-header-bar>
+	
+   <ion-content>
+        <div class="searchDivBox search-bar">
+            <label class="item-input-wrapper textbox-search searchDivBox width80">
+                <i class="icon ion-search placeholder-icon"></i>
+                <input type="search" placeholder='{{"workorder.activities_lookup.searchActivity" | translate}}' ng-model="RA.searchactivity" class="width-100">                
+            </label>
+             <span  class="button icon ion-close-round" ng-click="clearsearchactivity()" ng-show="RA.searchactivity.length > 0"></span>
+        </div>
+      	<ion-list>
+      		<ion-item ng-repeat="activity in RA.activities | filter:RA.searchactivity">
+      			<div class="row">
+              <div class="col">
+                <a href="#" ng-click="RA.select_the_activity(activity.Id, activity.Name)">{{activity.Name}}</a>
+              </div>   
+            </div>
+      		</ion-item>
+  		  </ion-list>
+      <div class="card" ng-show="RA.activities.length  == 0 || (RA.activities | filter:RA.searchactivity).length==0 ">
+        <div class="item item-text-wrap">
+            <p>{{"workorder.activities_lookup.noActivity" | translate}}</p>
+        </div>
+      </div>
+      <!-- <div class="card " ng-show="(RA.activities | filter:RA.searchactivity).length==0 ">
+                <div class="item item-text-wrap ">       
+                            <p>No Activity found</p>   
+                </div>
+      </div> -->
+
+   </ion-content>
+   
+</ion-modal-view>

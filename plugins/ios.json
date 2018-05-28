@@ -1,0 +1,60 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {}
+    },
+    "installed_plugins": {
+        "com.salesforce": {
+            "PACKAGE_NAME": "com.cognizantenterprisemobility.cognizantmedvantage"
+        },
+        "cordova-plugin-camera": {
+            "CAMERA_USAGE_DESCRIPTION": " ",
+            "PHOTOLIBRARY_USAGE_DESCRIPTION": " ",
+            "PACKAGE_NAME": "com.cognizantenterprisemobility.cognizantmedvantage"
+        },
+        "cordova-plugin-console": {
+            "PACKAGE_NAME": "com.cognizantenterprisemobility.cognizantmedvantage"
+        },
+        "cordova-plugin-dialogs": {
+            "PACKAGE_NAME": "com.cognizantenterprisemobility.cognizantmedvantage"
+        },
+        "cordova-plugin-geolocation": {
+            "PACKAGE_NAME": "com.cognizantenterprisemobility.cognizantmedvantage"
+        },
+        "cordova-plugin-network-information": {
+            "PACKAGE_NAME": "com.cognizantenterprisemobility.cognizantmedvantage"
+        },
+        "cordova-plugin-splashscreen": {
+            "PACKAGE_NAME": "com.cognizantenterprisemobility.cognizantmedvantage"
+        },
+        "cordova-plugin-statusbar": {
+            "PACKAGE_NAME": "com.cognizantenterprisemobility.cognizantmedvantage"
+        },
+        "ionic-plugin-keyboard": {
+            "PACKAGE_NAME": "com.cognizantenterprisemobility.cognizantmedvantage"
+        },
+        "mx.ferreyra.callnumber": {
+            "PACKAGE_NAME": "com.cognizantenterprisemobility.cognizantmedvantage"
+        }
+    },
+    "dependent_plugins": {
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "com.cognizantenterprisemobility.cognizantmedvantage"
+        },
+        "cordova-plugin-device": {
+            "PACKAGE_NAME": "com.cognizantenterprisemobility.cognizantmedvantage"
+        },
+        "phonegap-plugin-push": {
+            "PACKAGE_NAME": "com.cognizantenterprisemobility.cognizantmedvantage"
+        },
+        "cordova-plugin-wkwebview-engine": {
+            "PACKAGE_NAME": "com.cognizantenterprisemobility.cognizantmedvantage"
+        },
+        "cordova-plugin-compat": {
+            "PACKAGE_NAME": "com.cognizantenterprisemobility.cognizantmedvantage"
+        }
+    }
+}

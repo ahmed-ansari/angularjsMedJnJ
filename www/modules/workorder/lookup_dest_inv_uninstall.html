@@ -1,0 +1,62 @@
+<ion-modal-view style="width:94%; left: 3%; right: 3%;">
+   <ion-header-bar>
+     <button ng-click="closeModal()" class="button button-icon icon"> <i class="ion-close size-12" ></i></button>
+      <h1 class = "title">{{"workorder.lookup_dest_inv_uninstall.destination-inventory" | translate}}</h1>
+   <!--<h1 class = "title">Destination Inventory</h1>
+      <span ng-click="closeModal()">X</span>-->
+   </ion-header-bar>
+	
+   <ion-content>
+        <div class="searchDivBox">  
+            <label class="item-input-wrapper textbox-search searchDivBox">
+                <i class="icon ion-search placeholder-icon"></i>
+                <input type="search" placeholder='{{"workorder.lookup_dest_inv_uninstall.search-destination-inventory" | translate}}' ng-model="destInvSearch" class="search-input">
+            </label>
+            <i class="icon ion-close-round search-cross" ng-click="destInvSearch = ''" ng-show="destInvSearch.length > 0"></i>
+         </div>
+
+      	<ion-list>
+          <ion-item>
+            <div class="row">
+                <div class="col item-text-wrap"><b>{{"workorder.lookup_dest_inv_uninstall.name" | translate}}</b></div>
+                <div class="col item-text-wrap"><b>{{"workorder.lookup_dest_inv_uninstall.owner-account" | translate}}</b></div>
+                <div class="col item-text-wrap"><b>{{"workorder.lookup_dest_inv_uninstall.owner-technician" | translate}}</b></div>
+                <div class="col item-text-wrap"><b>{{"workorder.lookup_dest_inv_uninstall.technician-user" | translate}}</b></div>
+                <div class="col item-text-wrap"><b>{{"workorder.lookup_dest_inv_uninstall.location" | translate}}</b></div>
+            </div> 
+          </ion-item>
+      		<ion-item ng-repeat="destInventory in uninstallAsset.destInventoryRecords |filter:destInvSearch| orderBy: 'Name'"">
+      			<div class="row">
+              <div class="col item-text-wrap">
+                <a href="#" ng-click="uninstallAsset.fetchDestInventory(destInventory.Id, destInventory.Name)">{{destInventory.Name}}</a>
+              </div>
+              
+              <div class="col item-text-wrap">
+                {{destInventory.MedConnect__Owner_Account__r.Name}}
+              </div> 
+ 
+              <div class="col item-text-wrap">
+                {{destInventory.MedConnect__Owner_Technician__r.Name}}
+              </div>  
+
+              <div class="col item-text-wrap">
+                {{destInventory.MedConnect__Technician_User__c}}
+              </div>  
+
+              <div class="col item-text-wrap">
+                {{destInventory.MedConnect__Location__r.Name}}
+              </div>  
+
+            </div>
+      		</ion-item>
+  		  </ion-list>
+
+      <div class="card" ng-show="uninstallAsset.destInventory.length == 0">
+        <div class="item item-text-wrap">
+            <p>{{"workorder.lookup_dest_inv_uninstall.no-destination-inventory-found" | translate}}</p>
+        </div>
+      </div>
+
+   </ion-content>
+   
+</ion-modal-view>

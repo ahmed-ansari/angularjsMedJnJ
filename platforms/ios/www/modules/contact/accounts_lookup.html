@@ -1,0 +1,36 @@
+<ion-modal-view>
+    <ion-header-bar>
+        <button ng-click="closeModal()" class="button button-icon icon"> <i class="ion-close size-12" ></i></button>
+        <h1 class="title" >{{"contact.accounts_lookup.select_account" | translate}}</h1>
+    </ion-header-bar>
+    <ion-content>
+        <div class="bar bar-header item-input-inset" style="position: relative;">
+            <label class="item-input-wrapper">
+                <i class="icon ion-ios-search placeholder-icon"></i>
+                <input type="search" placeholder="{{'contact.accounts_lookup.account-name' | translate}}" ng-model="createcontact.searchaccountname">
+            </label>
+            <i class="icon ion-close-round" ng-click="createcontact.searchaccountname = ''" ng-show="createcontact.searchaccountname.length > 0" style="position: absolute;top: -12px;"></i>
+            <button class="button button-positive" ng-click="createcontact.searchaccount();">
+                {{"contact.accounts_lookup.search" | translate}}
+            </button>
+        </div>
+        <div class="card" ng-if="createcontact.searhError">
+          <div class="item item-text-wrap">
+            {{createcontact.searhError}}
+          </div>
+        </div>
+         <ion-list>
+            <ion-item ng-repeat="account in createcontact.accounts" ng-if="createcontact.accounts">
+                <div class="row">
+                    <div class="col">
+                        <a href="#" ng-click="createcontact.select_the_account(account.Id, account.Name)">{{account.Name}}</a>
+                    </div>
+                </div>
+            </ion-item>
+        </ion-list>
+        <div class="card" ng-show="createcontact.no_record">
+            <div class="item item-text-wrap">
+                <p>{{"contact.accounts_lookup.no_records_found" | translate}}</p>
+            </div>
+    </ion-content>
+</ion-modal-view>

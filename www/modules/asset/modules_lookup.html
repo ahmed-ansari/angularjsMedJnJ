@@ -1,0 +1,56 @@
+<ion-modal-view>
+    <ion-header-bar>
+        <button ng-click="closeModal()" class="button button-icon icon"> <i class="ion-close size-12" ></i></button>
+
+        <h1 class="title" style="padding-left: 30px;">{{"asset.modules_lookup.selectModule" | translate }}</h1>
+    <!--<h1 class="title">Select Module</h1>
+		
+        <span ng-click="closeModal()">X</span>
+    -->
+    </ion-header-bar>
+    <ion-content>
+        <div class="searchDivBox search-bar">
+            <label class="item-input-wrapper textbox-search searchDivBox wid-92">
+                <i class="icon ion-search placeholder-icon"></i>
+                <input type="search" placeholder='{{"asset.modules_lookup.searchModule" | translate}}' ng-model="moduleCreate.searchmodule" class="width-100">
+            </label> <i class="icon ion-close-round" ng-click="moduleCreate.searchmodule = ''" ng-show="moduleCreate.searchmodule.length > 0"></i>
+        </div>
+        <ion-list>
+        <ion-item>
+            <div class="row">
+                <div class="col">
+                    <b>{{"asset.modules_lookup.productAttributeId" | translate}} </b>
+                </div>
+                <div class="col">
+                   <b> {{"asset.modules_lookup.product" | translate}} </b>
+                </div>
+                <!-- <div class="col">
+                    <b>Product Type</b>
+                </div> -->
+                <div class="col">
+                    <b>{{"asset.modules_lookup.name" | translate}}</b>
+                </div>
+            </div>
+        </ion-item>
+            <ion-item ng-repeat="module in moduleCreate.modules | filter:moduleCreate.searchmodule">
+                <div class="row">
+                    <div class="col">
+                        <a href="#" ng-click="moduleCreate.select_the_module(module.Id, module.Name)">{{module.Name}}</a>
+                    </div>
+                    <div class="col">
+                        {{module.MedConnect__Product__r.Name}}
+                    </div>
+                   
+                    <div class="col">
+                        {{module.MedConnect__Value__c}}
+                    </div>
+                </div>
+            </ion-item>
+        </ion-list>
+        <div class="card" ng-show="(moduleCreate.modules | filter:moduleCreate.searchmodule).length==0">
+            <div class="item item-text-wrap">
+                <p>{{"asset.modules_lookup.noModulesFound" | translate}}</p>
+            </div>
+        </div>
+    </ion-content>
+</ion-modal-view>

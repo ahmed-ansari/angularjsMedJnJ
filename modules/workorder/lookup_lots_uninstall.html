@@ -1,0 +1,47 @@
+<ion-modal-view style="width:94%; left: 3%; right: 3%;">
+    <ion-header-bar>
+        <button ng-click="closeModal()" class="button button-icon icon"> <i class="ion-close size-12" ></i></button>
+        <h1 class="title">{{"workorder.lookup_lots_uninstall.lot" | translate}}</h1>
+    <!--<h1 class="title">Lot</h1>
+        <span ng-click="closeModal()">X</span>-->
+	</ion-header-bar>
+    <ion-content>
+        <div class="searchDivBox">
+            <label class="item-input-wrapper textbox-search searchDivBox">
+                <i class="icon ion-search placeholder-icon"></i>
+                <input type="search" placeholder='{{"workorder.lookup_lots_uninstall.searchLot" | translate}}' ng-model="lotSearch" class="search-input">
+            </label>
+            <i class="icon ion-close-round search-cross" ng-click="lotSearch = ''" ng-show="lotSearch.length > 0"></i>
+        </div>
+        <ion-list>
+            <ion-item>
+                <div class="row">
+                    <div class="col item-text-wrap"><b>{{"workorder.lookup_lots_uninstall.lotName" | translate}}</b></div>
+                    <div class="col item-text-wrap"><b>{{"workorder.lookup_lots_uninstall.lotNumber" | translate}}</b></div>
+                    <div class="col item-text-wrap"><b>{{"workorder.lookup_lots_uninstall.product" | translate}}</b></div>
+                </div>
+            </ion-item>
+            <ion-item ng-repeat="lot in uninstallAsset.Lots |filter:lotSearch| orderBy: 'Name'" ">
+      			<div class="row ">
+	              <div class="col item-text-wrap ">
+	                <a href="# " ng-click="uninstallAsset.selectLot(lot.Id, lot.Name) ">{{lot.Name}}</a>
+	              </div>
+	              
+	              <div class="col item-text-wrap ">
+	                {{lot.MedConnect__Lot_Number__c}}
+	              </div> 
+	 
+	              <div class="col item-text-wrap ">
+	                {{lot.MedConnect__Product__r.Name}}
+	              </div> 
+            </div>
+      		</ion-item>
+  		  </ion-list>
+
+      <div class="card " ng-show="uninstallAsset.Lots.length==0 ||( uninstallAsset.Lots | filter:lotSearch).length==0">
+        <div class="item item-text-wrap ">
+            <p>{{"workorder.lookup_lots_uninstall.noLotFound" | translate}}</p>
+        </div>
+      </div>
+   </ion-content>   
+</ion-modal-view>

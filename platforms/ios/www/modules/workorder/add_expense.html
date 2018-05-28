@@ -1,0 +1,69 @@
+<ion-view title='{{"workorder.add_expense.workOrder" | translate}}'>
+ <ion-nav-buttons side="right">
+    <div syncup></div>
+    <div offline></div>  
+
+    </ion-nav-buttons>
+    <ion-content padding="false">
+        <div class="add-expense">
+            <div class="row detail-top-blue-banner white-btm-border contact-detail">
+                <div class="col">
+                    <h3 ng-bind="(expense.expenseId && expense.expenseId != 'null') ? ('workorder.add_expense.editExpense' | translate): ('workorder.add_expense.newExpense' | translate)"></h3>
+                </div>
+            </div> 
+            <form name="expense.expenseForm" novalidate="" ng-submit="expense.expenseSave(expense.expenseForm)">
+                <div class="row">
+                    <div class="col images">
+                        <select name="type" id="type" class="select_parent_width custom-select" ng-model="expense.exp.type">
+                            <option value="">{{"workorder.add_expense.type" | translate}}</option>
+                            <option value="Consumable Charge">{{"workorder.add_expense.consumableCharge" | translate}}</option>
+                            <option value="Airfare">{{"workorder.add_expense.airfare" | translate}}</option>
+                            <option value="Entertainment">{{"workorder.add_expense.entertainment" | translate}}</option>    
+                            <option value="Food - Breakfast">{{"workorder.add_expense.breakfast" | translate}}</option>
+                            <option value="Food - Lunch">{{"workorder.add_expense.lunch" | translate}}</option>
+                            <option value="Food - Dinner">{{"workorder.add_expense.dinner" | translate}}</option>
+                            <option value="Gas">{{"workorder.add_expense.gas" | translate}}</option>
+                            <option value="Lodging">{{"workorder.add_expense.lodging" | translate}}</option>
+                            <option value="Mileage">{{"workorder.add_expense.mileage" | translate}}</option>
+                            <option value="Miscellaneous">{{"workorder.add_expense.miscellaneous" | translate}}</option>
+                            <option value="Parking">{{"workorder.add_expense.parking" | translate}}</option>
+                            <option value="Parts">{{"workorder.add_expense.parts" | translate}}</option>
+                            <option value="Phone">{{"workorder.add_expense.phone" | translate}}</option>
+                            <option value="Rental Cars">{{"workorder.add_expense.rentalCars" | translate}}</option>
+                            <option value="Tolls">{{"workorder.add_expense.tolls" | translate}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="col exp-checkbox">
+                            <ion-checkbox ng-model="expense.exp.billable">{{"workorder.add_expense.billable" | translate}}</ion-checkbox>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <label class="item-input item-floating-label" ng-class="{ 'has-error' : expense.expenseForm.cost.$invalid && expense.expenseForm.cost.$dirty}">
+                            <span class="input-label">{{"workorder.add_expense.amount" | translate}}</span>
+                            <input type="tel" name="cost" ng-model="expense.exp.cost"  ng-pattern="/^[0-9]+(\.[0-9]{1,6})?$/">
+                        </label>
+                        <div class="form-errors" ng-messages="expense.expenseForm.cost.$error" ng-show='expense.expenseForm.cost.$invalid && expense.expenseForm.cost.$dirty'>
+                            <div class="form-error" ng-message="pattern">{{"workorder.add_expense.invalidNum" | translate}}<i class="ion-information-circled"></i> </div>
+                        </div>
+                    </div>
+                </div>
+               
+                <div class="row">
+                    <div class="col">
+                        <input type="submit" class="button button-positive" value='{{"workorder.add_expense.save" | translate}}'>
+                    </div>
+                    <div class="col">
+                        <div class="button button-outline  button-assertive" ng-click="expense.backToWorkOrder()">
+                            {{"workorder.add_expense.cancel" | translate}}
+                        </div>
+                    </div>
+                    <div class="col"></div>
+                    <div class="col"></div>
+                </div>
+            </form>
+        </div>
+    </ion-content>
+</ion-view>

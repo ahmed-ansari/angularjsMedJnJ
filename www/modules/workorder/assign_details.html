@@ -1,0 +1,64 @@
+<ion-view view-title='{{"workorder.apply_tb.technicalBulletin" | translate}}'>
+    <ion-content>
+        <div class="module-detail">
+            <div class="row detail-top-blue-banner white-btm-border">
+                <div class="col">
+                    <h3 ng-bind="assignDetails.WO.Name"></h3>
+                </div>
+            </div>
+
+            <div class="row detail-top-blue-banner">
+                <div class="col-50">               
+                    <a class="hyperLinks whiteLink hLink" href="#/app/activity/{{assignDetails.WO.MedConnect__Work_Order_Activity__c}}"><i class="icon ion-link"></i><span ng-bind="assignDetails.WOA"></span></a>
+                </div>
+                <div class="col-50">
+                    <h3 class="whiteLink" ng-bind="assignDetails.detail.MedConnect__Tool_Name__c"></h3>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="tab-container">
+            <tab-slide-box>
+                <div class="tsb-icons">
+                    <div class="tsb-ic-wrp">
+                        <ion-scroll direction="x" class="tsb-hscroll">
+                            <a href="javascript:;" class="ion-home1">{{"workorder.apply_tb.generalInfo" | translate}}</a>
+                        </ion-scroll>
+                    </div>
+                </div>
+                <ion-slide-box show-pager="false" on-slide-changed="slideHasChanged($index)">
+                    <ion-slide>
+                        <div class="expense-detail">
+                            <div class="list">
+                                <div class="item">
+                                    {{"workorder.apply_tb.toolID" | translate}} <span class="item-note" ng-bind="assignDetails.WO.Name"></span>
+                                </div>
+                                 <div class="item">
+                                    {{"workorder.apply_tb.productName" | translate}} <span class="item-note" ng-bind="assignDetails.detail.MedConnect__Product__r.Name"></span>
+                                </div>
+                                 <div class="item">
+                                    {{"workorder.apply_tb.specification1" | translate}} <span class="item-note" ng-bind="assignDetails.detail.MedConnect__Specification_1__c"></span>
+                                </div>
+                                <div class="item">
+                                    {{"workorder.apply_tb.specification2" | translate}} <span class="item-note" ng-bind="assignDetails.detail.MedConnect__Specification_2__c"></span>
+                                </div>
+                                <div class="item">
+                                    {{"workorder.apply_tb.specification3" | translate}} <span class="item-note" ng-bind="assignDetails.detail.MedConnect__Specification_3__c"></span>
+                                </div>
+                                <div class="item">
+                                    {{"workorder.apply_tb.source" | translate}} <span class="item-note" ng-bind="assignDetails.detail.MedConnect__Source__c"></span>
+                                </div>
+                                <div class="item">
+                                    {{"workorder.apply_tb.owner" | translate}} <span class="item-note" ng-bind="assignDetails.detail.Owner.Name"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </ion-slide>
+                </ion-slide-box>
+            </tab-slide-box>
+        </div>
+
+
+    </ion-content>
+</ion-view>

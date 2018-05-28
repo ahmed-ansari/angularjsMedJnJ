@@ -1,0 +1,40 @@
+<div class="list" ng-show="singleWorkOrder.warranty_info_data">
+    <div class="item">
+        {{"workorder.wo_warrantyinfo.asset-warranty" | translate}}<span class="item-note" ng-bind="singleWorkOrder.warranty_info.Name"></<span>
+    </div>
+    <div class="item">
+        {{"workorder.wo_warrantyinfo.asset-name" | translate}} <span class="item-note" ng-bind="singleWorkOrder.warranty_info.MedConnect__Asset__r.Name"></span>
+    </div>
+    <div class="item">
+        {{"workorder.wo_warrantyinfo.product-name" | translate}} <span class="item-note" ng-bind="singleWorkOrder.warranty_info.MedConnect__Product_Name__c">
+        </span>
+    </div>
+    <div class="item">
+        {{"workorder.wo_warrantyinfo.start-date" | translate}} <span class="item-note" ng-bind="singleWorkOrder.warranty_info.MedConnect__Start_Date__c">
+        </span>
+    </div>
+    <div class="item">
+        {{"workorder.wo_warrantyinfo.parent-product" | translate}} <span class="item-note" ng-bind="singleWorkOrder.warranty_info.MedConnect__Asset__r.MedConnect__Product__r.MedConnect__Parent_Product_Name__r.Name">
+        </span>
+    </div>
+    <div class="item">
+        {{"workorder.wo_warrantyinfo.material-covered" | translate}} <span class="item-note">
+        {{singleWorkOrder.warranty_info.MedConnect__Warranty__r.MedConnect__Material_Covered__c}}% -- {{singleWorkOrder.warranty_info.MedConnect__Warranty__r.MedConnect__Duration_of_Material_Coverage__c}} {{singleWorkOrder.warranty_info.MedConnect__Warranty__r.MedConnect__Unit_of_Time_for_Material_Coverage__c}}, <b>{{"workorder.wo_warrantyinfo.valid-till" | translate}}  {{singleWorkOrder.warranty_info.MedConnect__Material_End_Date__c}}</b>
+        </span>
+    </div>
+    <div class="item">
+        {{"workorder.wo_warrantyinfo.labor-covered" | translate}} <span class="item-note">
+        {{singleWorkOrder.warranty_info.MedConnect__Warranty__r.MedConnect__Labor_Covered__c}}% -- {{singleWorkOrder.warranty_info.MedConnect__Warranty__r.MedConnect__Duration_of_Labor_Coverage__c}} {{singleWorkOrder.warranty_info.MedConnect__Warranty__r.MedConnect__Unit_of_Time_for_Labor_Coverage__c}}, <b>{{"workorder.wo_warrantyinfo.valid-till" | translate}}  {{singleWorkOrder.warranty_info.MedConnect__Labor_End_Date__c}}</b>
+        </span>
+    </div>
+    <div class="item">
+        {{"workorder.wo_warrantyinfo.expense-covered" | translate}} <span class="item-note">
+        {{singleWorkOrder.warranty_info.MedConnect__Warranty__r.MedConnect__Expense_Covered__c}}% -- {{singleWorkOrder.warranty_info.MedConnect__Warranty__r.MedConnect__Duration_of_Expense_Coverage__c}} {{singleWorkOrder.warranty_info.MedConnect__Warranty__r.MedConnect__Unit_of_Time_for_Expense_Coverage__c}}, <b>{{"workorder.wo_warrantyinfo.valid-till" | translate}}  {{singleWorkOrder.warranty_info.MedConnect__Expense_End_Date__c}}</b>
+        </span>
+    </div>
+</div>
+<div class="card" ng-show="!singleWorkOrder.warranty_info_data">
+    <div class="item item-text-wrap" style="text-align:center;">
+        <p>{{"workorder.wo_warrantyinfo.no-warranty-info-found" | translate}}</p>
+    </div>
+</div>

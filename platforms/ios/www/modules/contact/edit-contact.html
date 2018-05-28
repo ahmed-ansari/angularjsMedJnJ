@@ -1,0 +1,144 @@
+<ion-view title="{{'contact.edit-contact.contact' | translate}}">
+    <ion-nav-buttons side="right">
+        <div syncup></div>
+        <div offline></div>
+        <button class="button button-clear" ng-click="save()">{{"contact.edit-contact.save" | translate}}</button>
+    </ion-nav-buttons>
+    <ion-content padding="false">
+        <div class="add-quote-expense">
+            <div class="row detail-top-blue-banner white-btm-border contact-detail">
+                <div class="col">
+                    <h3>{{"contact.edit-contact.create_contact" | translate}}</h3>
+                </div>
+            </div>
+            <form name="createcontact.contactForm" novalidate="" ng-submit="createcontact.contactSave(createcontact.contactForm)">
+                <div class="row">
+                    <div class="col">
+                        <label class="item-input item-floating-label" ng-class="{ 'has-error' : createcontact.contactForm.firstname.$invalid && createcontact.contactForm.firstname.$dirty}">
+                            <span class="input-label">{{"contact.edit-contact.first_name" | translate}}</span>
+                            <input type="text" name="firstname" ng-model="createcontact.contact.firstname" ng-maxlength="25" required>
+                        </label>
+                        <div class="form-errors" ng-messages="createcontact.contactForm.firstname.$error" ng-show='createcontact.contactForm.$submitted || createcontact.contactForm.firstname.$dirty'>
+                            <div class="form-error" ng-message="maxlength">{{"contact.edit-contact.value_msg" | translate}} <i class="ion-information-circled"></i> </div>
+                            <div class="form-error" ng-message="required">{{"contact.edit-contact.field_req" | translate}} <i class="ion-information-circled"></i> </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <label class="item-input item-floating-label" ng-class="{ 'has-error' : createcontact.contactForm.lastname.$invalid && createcontact.contactForm.lastname.$dirty}">
+                            <span class="input-label">{{"contact.edit-contact.last_name" | translate}}</span>
+                            <input type="text" name="lastname" ng-model="createcontact.contact.lastname" ng-maxlength="25" required>
+                        </label>
+                        <div class="form-errors" ng-messages="createcontact.contactForm.lastname.$error" ng-show='createcontact.contactForm.$submitted || createcontact.contactForm.lastname.$dirty'>
+                            <div class="form-error" ng-message="maxlength">{{"contact.edit-contact.value_msg" | translate}} <i class="ion-information-circled"></i> </div>
+                            <div class="form-error" ng-message="required">{{"contact.edit-contact.field_req" | translate}} <i class="ion-information-circled"></i> </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <label class="item-input item-floating-label" ng-class="{ 'has-error' : createcontact.contactForm.title.$invalid && createcontact.contactForm.title.$dirty}">
+                            <span class="input-label">{{"contact.edit-contact.title" | translate}}</span>
+                            <input type="text" name="title" ng-model="createcontact.contact.title" ng-maxlength="25">
+                        </label>
+                        <div class="form-errors" ng-messages="createcontact.contactForm.title.$error" ng-show='createcontact.contactForm.$submitted || createcontact.contactForm.title.$dirty'>
+                            <div class="form-error" ng-message="maxlength">{{"contact.edit-contact.value_msg" | translate}}<i class="ion-information-circled"></i> </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <label class="item-input item-floating-label" ng-class="{ 'has-error' : createcontact.contactForm.department.$invalid && createcontact.contactForm.department.$dirty}">
+                            <span class="input-label">{{"contact.edit-contact.department" | translate}}</span>
+                            <input type="text" name="department" ng-model="createcontact.contact.department" ng-maxlength="25">
+                        </label>
+                        <div class="form-errors" ng-messages="createcontact.contactForm.department.$error" ng-show='createcontact.contactForm.$submitted || createcontact.contactForm.department.$dirty'>
+                            <div class="form-error" ng-message="maxlength">{{"contact.edit-contact.value_msg" | translate}}<i class="ion-information-circled"></i> </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <label class="item-input item-floating-label" ng-class="{ 'has-error' : createcontact.contactForm.account.$invalid && createcontact.contactForm.account.$dirty}">
+                            <span class="input-label">{{"contact.edit-contact.account_name" | translate}}</span>
+                            <input type="text" name="account" ng-required="true" ng-model="createcontact.selected_account_name" required readonly>
+                        </label>
+                        <div class="form-errors" ng-messages="createcontact.contactForm.account.$error" ng-show='createcontact.contactForm.$submitted || createcontact.contactForm.account.$dirty'>
+                            <div class="form-error" ng-message="required">{{"contact.edit-contact.field_req" | translate}} <i class="ion-information-circled"></i> </div>
+                        </div>
+                    </div>
+                    <div class="col col-10 padding-30">
+                        <span class="step size-24">
+                        <i class="ion-search icon" ng-click="createcontact.showAccounts()"></i>
+                        </span>
+                    </div>
+                    <div class="col images">
+                        <select name="role" id="role" class="select_parent_width custom-select" ng-model="createcontact.contact.role" required>
+                            <option value="">--Role--</option>
+                            <option value="Distrubutor">Distrubutor</option>
+                            <option value="Employee">Employee</option>
+                            <option value="Field Service Engineer">Field Service Engineer</option>
+                            <option value="Health Care Professional">Health Care Professional</option>
+                            <option value="Health Care Professional">Health Care Professional</option>
+                            <option value="Sales Rep">Sales Rep</option>
+                            <option value="Unknown">Unknown</option>
+                        </select>
+                        <div class="form-errors" ng-messages="createcontact.contactForm.role.$error" ng-show='createcontact.contactForm.$submitted || createcontact.contactForm.role.$dirty'>
+                            <div class="form-error" ng-message="required">{{"contact.edit-contact.field_req" | translate}}<i class="ion-information-circled"></i> </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <label class="item-input item-floating-label" ng-class="{ 'has-error' : createcontact.contactForm.email.$invalid && createcontact.contactForm.email.$dirty}">
+                            <span class="input-label">{{"contact.edit-contact.email" | translate}}</span>
+                            <input type="email" name="email" ng-model="createcontact.contact.email">
+                        </label>
+                        <div class="form-errors" ng-messages="createcontact.contactForm.email.$error" ng-show='createcontact.contactForm.$submitted || createcontact.contactForm.email.$dirty'>
+                            <div class="form-error" ng-message="email">{{"contact.edit-contact.invalid_email" | translate}} <i class="ion-information-circled"></i> </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <label class="item-input item-floating-label" ng-class="{ 'has-error' : createcontact.contactForm.phone.$invalid && createcontact.contactForm.phone.$dirty}">
+                            <span class="input-label">{{"contact.edit-contact.phone" | translate}}</span>
+                            <input type="number" name="phone" ng-model="createcontact.contact.phone">
+                        </label>
+                        <div class="form-errors" ng-messages="createcontact.contactForm.phone.$error" ng-show='createcontact.contactForm.$submitted || createcontact.contactForm.phone.$dirty'>
+                            <div class="form-error" ng-message="number">{{"contact.edit-contact.invalid_number" | translate}}<i class="ion-information-circled"></i> </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <label class="item-input item-floating-label" ng-class="{ 'has-error' : createcontact.contactForm.homephone.$invalid && createcontact.contactForm.homephone.$dirty}">
+                            <span class="input-label">{{"contact.edit-contact.home_phone" | translate}}</span>
+                            <input type="number" name="homephone" ng-model="createcontact.contact.homephone">
+                        </label>
+                        <div class="form-errors" ng-messages="createcontact.contactForm.homephone.$error" ng-show='createcontact.contactForm.$submitted || createcontact.contactForm.homephone.$dirty'>
+                            <div class="form-error" ng-message="number">{{"contact.edit-contact.invalid_number" | translate}} <i class="ion-information-circled"></i> </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <label class="item-input item-floating-label" ng-class="{ 'has-error' : createcontact.contactForm.mobile.$invalid && createcontact.contactForm.mobile.$dirty}">
+                            <span class="input-label">{{"contact.edit-contact.mobile" | translate}} </span>
+                            <input type="number" name="mobile" ng-model="createcontact.contact.mobile">
+                        </label>
+                        <div class="form-errors" ng-messages="createcontact.contactForm.mobile.$error" ng-show='createcontact.contactForm.$submitted || createcontact.contactForm.mobile.$dirty'>
+                            <div class="form-error" ng-message="number">{{"contact.edit-contact.invalid_number" | translate}}  <i class="ion-information-circled"></i> </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <input type="submit" class="button button-positive" value="{{'contact.edit-contact.save' | translate}}">
+                        <!-- ng-disabled="activity.activityForm.$invalid || activity.activityForm.$pending" -->
+                    </div>
+                    <div class="col">
+                        <div class="button button-outline  button-assertive" ng-click="createcontact.takeMeBack()">
+                            {{"contact.edit-contact.cancel" | translate}} 
+                        </div>
+                    </div>
+                    <div class="col"></div>
+                    <div class="col"></div>
+                </div>
+            </form>
+        </div>
+    </ion-content>
+</ion-view>

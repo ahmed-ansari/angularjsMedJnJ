@@ -1,0 +1,46 @@
+
+<!-- <ion-scroll direction="y" class="scrollPtHtGI"> -->
+<div class="list">
+       <div class="item">
+      {{"quote.quote-generalInfo.parent_quote" | translate}}  <span class="item-note">
+      <a href="#/app/quote/{{singleQuote.quote.MedConnect__Parent_Quote__c}}/singleQuote.workOrderID" ng-show="singleQuote.quote.MedConnect__Parent_Quote__c">{{singleQuote.quote.MedConnect__Parent_Quote__r.Name}}</a>
+      </span>
+    </div>
+    <div class="item">
+        {{"quote.quote-generalInfo.status" | translate}} <span class="item-note">{{getVariableDataFromObject(singleQuote.quote, 'Status__c')}}</span>
+    </div>
+    <div class="item">
+        {{"quote.quote-generalInfo.discount" | translate}} <span class="item-note">{{getVariableDataFromObject(singleQuote.quote, 'Discount__c')}}</span>
+    </div>
+        <div class="item">
+        {{"quote.quote-generalInfo.total_billable_line_amount" | translate}} <span class="item-note">{{getVariableDataFromObject(singleQuote.quote, 'Total_Billable_Line_Amount__c')}}</span>
+    </div>
+    <!-- <div class="item">
+        Total Gross Amount<span class="item-note">{{getVariableDataFromObject(singleQuote.quote, 'Total_Gross_Amount__c')}}</span>
+    </div> -->
+         <div class="item">
+        {{"quote.quote-generalInfo.total_payable_amount" | translate}} <span class="item-note">{{getVariableDataFromObject(singleQuote.quote, 'Total_Payble_Amount__c')}}</span>
+    </div>
+     <div class="item">
+       {{"quote.quote-generalInfo.valid_till" | translate}} <span class="item-note">{{getVariableDataFromObject(singleQuote.quote, 'Valid_Till__c') | date:'dd-MM-yyyy'}}</span>
+    </div>
+         <div class="item">
+       {{"quote.quote-generalInfo.material_warranty_coverage" | translate}} <span class="item-note">{{getVariableDataFromObject(singleQuote.quote, 'Material_Warranty_Coverage__c')}}</span>
+    </div>
+             <div class="item">
+      {{"quote.quote-generalInfo.labor_warranty_coverage" | translate}}  <span class="item-note">{{getVariableDataFromObject(singleQuote.quote, 'Labour_Warranty_Coverage__c')}}</span>
+    </div>
+      <div class="item">
+    {{"quote.quote-generalInfo.expense_warranty_coverage" | translate}}  <span class="item-note">{{getVariableDataFromObject(singleQuote.quote, 'Expense_Warranty_Coverage__c')}}</span>
+    </div>
+  <!--          <div class="item item-divider">
+        Description Information
+    </div>
+    <p class="item full-text">{{getVariableDataFromObject(singleQuote.quote, 'Description__c')}}</p>-->
+
+  
+    
+
+
+</div>
+<!-- </ion-scroll> -->

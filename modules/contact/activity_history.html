@@ -1,0 +1,23 @@
+<ion-list  ng-show="singlecontact.history.length > 0">
+    <ion-item class="subCtHdr">
+        <div class="row">
+            <div class="col"><b>{{"contact.activity_history.subject" | translate}}</b></div>
+            <div class="col"><b>{{"contact.activity_history.name" | translate}}</b></div>
+            <div class="col"><b>{{"contact.activity_history.related_to" | translate}} to</b></div>
+        </div>
+    </ion-item>
+    <ion-scroll direction="y" class="scrollCtHt">
+        <ion-item ng-repeat="history in singlecontact.history">
+            <div class="row">
+                <div class="col ellipsis">{{history.Subject}}</div>
+                <div class="col">{{history.Who.Name}}</div>
+                <div class="col ellipsis">{{history.What.Name}}</div>
+            </div>
+        </ion-item>
+    </ion-scroll>
+</ion-list>
+<div class="card" ng-show="singlecontact.history.length == 0">
+    <div class="item item-text-wrap">
+        {{"contact.activity_history.no_records_found" | translate}}!
+    </div>
+</div>

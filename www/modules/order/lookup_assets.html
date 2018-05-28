@@ -1,0 +1,66 @@
+<ion-modal-view>
+    <ion-header-bar>
+        <h1 class="title">Select Asset</h1>
+        <span ng-click="closeModal()">X</span>
+    </ion-header-bar>
+    <ion-content>
+        <div class="bar bar-header item-input-inset" style="position: relative;">
+            <label class="item-input-wrapper">
+                <i class="icon ion-ios-search placeholder-icon"></i>
+                <input type="search" placeholder="Asset Name" ng-model="neworderitem.searchassetname">
+            </label>
+            <i class="icon ion-close-round" ng-click="neworderitem.searchassetname = ''" ng-show="neworderitem.searchassetname.length > 0" style="position: absolute;top: 6px;"></i>
+            <button class="button button-positive" ng-click="neworderitem.searchAsset();">
+                Search
+            </button>
+        </div>
+        <div class="card" ng-if="neworderitem.searchAssetError">
+            <div class="item item-text-wrap">
+                {{neworderitem.searchAssetError}}
+            </div>
+        </div>
+        <ion-list ng-if="neworderitem.Assets">
+            <ion-item>
+                <div class="row">
+                    <div class="col item-text-wrap"><b>Asset Name</b></div>
+                    <div class="col item-text-wrap"><b>Serial No</b></div>
+                    <div class="col item-text-wrap"><b>Product</b></div>
+                    <!-- <div class="col item-text-wrap"><b>Location Account</b></div> -->
+                    <div class="col item-text-wrap"><b>Lot Number</b></div>
+                    <div class="col item-text-wrap"><b>Batch Number</b></div>
+                    <!-- <div class="col item-text-wrap"><b>Installed Date</b></div>
+                    <div class="col item-text-wrap"><b>Installed By</b></div> -->
+                </div>
+            </ion-item>
+            <ion-item ng-repeat="asset in neworderitem.Assets">
+                <div class="row ">
+                    <div class="col item-text-wrap ">
+                        <a href="# " ng-click="neworderitem.selectAsset(asset.Id, asset.Name) ">{{asset.Name}}</a>
+                    </div>
+                    <div class="col item-text-wrap ">
+                        {{asset.MedConnect__Serial_No__c}}
+                    </div>
+                    <div class="col item-text-wrap ">
+                        {{asset.MedConnect__Product__r.Name}}
+                    </div>
+                    <div class="col item-text-wrap ">
+                        {{asset.MedConnect__Lot_Master1__r.Name}}
+                    </div>
+                    <div class="col item-text-wrap ">
+                        {{asset.MedConnect__Batch_Master__r.Name}}
+                    </div>
+                   <!--  <div class="col item-text-wrap ">
+                        {{asset.MedConnect__Installed_Date__c}}
+                    </div>
+                    <div class="col item-text-wrap ">
+                        {{asset.MedConnect__Installed_By__r.Name}}
+                    </div> -->
+                </div>
+            </ion-item>
+        </ion-list>
+        <div class="card" ng-show="neworderitem.no_asset">
+            <div class="item item-text-wrap">
+                <p>No Records Found</p>
+            </div>
+    </ion-content>
+</ion-modal-view>

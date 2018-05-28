@@ -1,0 +1,68 @@
+<ion-modal-view>
+    <ion-header-bar>
+        <button ng-click="closeModal()" class="button button-icon icon"> <i class="ion-close size-12" ></i></button>
+        <h1 class="title">{{"workorder.lookup_serialized_ports_uninstall.select-asset" | translate}}</h1>
+    <!--<h1 class="title">Select Asset</h1>
+        <span ng-click="closeModal()">X</span>-->
+	</ion-header-bar>
+    <ion-content>
+        <div class="bar bar-header item-input-inset" style="position: relative;">
+            <label class="item-input-wrapper">
+                <i class="icon ion-ios-search placeholder-icon"></i>
+                <input type="search" placeholder="{{'workorder.lookup_serialized_ports_uninstall.paceholder' | translate}}" ng-model="uninstallAsset.searchasset2name">
+            </label>
+            <i class="icon ion-close-round" ng-click="uninstallAsset.searchasset2name = ''" ng-show="uninstallAsset.searchasset2name.length > 0" style="position: absolute;top: 6px;"></i>
+            <button class="button button-positive" ng-click="uninstallAsset.search_seriailized_port();">
+                {{"workorder.lookup_serialized_ports_uninstall.search" | translate}}
+            </button>
+        </div>
+        <div class="card" ng-if="uninstallAsset.searchAsset2Error">
+            <div class="item item-text-wrap">
+                {{uninstallAsset.searchAsset2Error}}
+            </div>
+        </div>
+        <ion-list ng-if="uninstallAsset.Assets2">
+            <ion-item>
+                <div class="row">
+                    <div class="col item-text-wrap"><b>{{"workorder.lookup_serialized_ports_uninstall.assetName" | translate}}</b></div>
+                    <div class="col item-text-wrap"><b>{{"workorder.lookup_serialized_ports_uninstall.serialNo" | translate}}</b></div>
+                    <div class="col item-text-wrap"><b>{{"workorder.lookup_serialized_ports_uninstall.product" | translate}}</b></div>
+                    <!-- <div class="col item-text-wrap"><b>Location Account</b></div> -->
+                    <div class="col item-text-wrap"><b>{{"workorder.lookup_serialized_ports_uninstall.lotNumber" | translate}}</b></div>
+                    <div class="col item-text-wrap"><b>{{"workorder.lookup_serialized_ports_uninstall.batchNumber" | translate}}</b></div>
+                    <!-- <div class="col item-text-wrap"><b>Installed Date</b></div>
+                    <div class="col item-text-wrap"><b>Installed By</b></div> -->
+                </div>
+            </ion-item>
+            <ion-item ng-repeat="asset in uninstallAsset.Assets2">
+                <div class="row ">
+                    <div class="col item-text-wrap ">
+                        <a href="# " ng-click="uninstallAsset.select_seriailized_port(asset.Id, asset.Name) ">{{asset.Name}}</a>
+                    </div>
+                    <div class="col item-text-wrap ">
+                        {{asset.MedConnect__Serial_No__c}}
+                    </div>
+                    <div class="col item-text-wrap ">
+                        {{asset.MedConnect__Product__r.Name}}
+                    </div>
+                    <div class="col item-text-wrap ">
+                        {{asset.MedConnect__Lot_Master1__r.Name}}
+                    </div>
+                    <div class="col item-text-wrap ">
+                        {{asset.MedConnect__Batch_Master__r.Name}}
+                    </div>
+                   <!--  <div class="col item-text-wrap ">
+                        {{asset.MedConnect__Installed_Date__c}}
+                    </div>
+                    <div class="col item-text-wrap ">
+                        {{asset.MedConnect__Installed_By__r.Name}}
+                    </div> -->
+                </div>
+            </ion-item>
+        </ion-list>
+        <div class="card" ng-show="uninstallAsset.no_asset2">
+            <div class="item item-text-wrap">
+                <p>{{"workorder.lookup_serialized_ports_uninstall.no-records-found" | translate}}</p>
+            </div>
+    </ion-content>
+</ion-modal-view>

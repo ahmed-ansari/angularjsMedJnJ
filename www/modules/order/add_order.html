@@ -1,0 +1,60 @@
+<ion-view title="Service Order">
+    <ion-nav-buttons side="right">
+        <div syncup></div>
+        <div offline></div>
+    </ion-nav-buttons>
+    <ion-content>
+        <div class="add-order">
+            <div class="row detail-top-blue-banner white-btm-border contact-detail">
+                <div class="col">
+                    <h3 ng-bind="(createOrder.orderId && createOrder.orderId != 'null') ? 'Edit Order': 'New Order'"></h3>
+                </div>
+            </div>
+            <form name="createOrder.orderForm" novalidate="" ng-submit="createOrder.saveOrder(createOrder.orderForm)">
+                <div class="row">
+                    <div class="col">
+                        <div class="col">Work Order</div>
+                        <div class="col">{{::createOrder.workOrderName}}</div>
+                    </div>
+                    <div class="col">
+                        <div class="col">Account</div>
+                        <div class="col">{{::createOrder.accountName}}</div>
+                    </div>
+                    <div class="col">
+                        <div class="col">Contact</div>
+                        <div class="col">{{::createOrder.contactName}}</div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col images">
+                        <select name="status" id="status" class="select_parent_width custom-select" ng-model="createOrder.status">
+                            <option value="">Status</option>
+                            <option value="Open">Open</option>
+                            <option value="In Progress">In Progress</option>
+                            <option value="Complete">Complete</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <label class="item-input item-floating-label">
+                            <span class="input-label">Reason for Return</span>
+                            <textarea name="reason_return" id="reason_return" cols="30" rows="5" ng-model="createOrder.reason_return" ng-maxlength="240"></textarea>
+                        </label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <input type="submit" class="button button-positive" value="Save">
+                    </div>
+                    <div class="col">
+                        <div class="button button-outline  button-assertive" ng-click="createOrder.backToWorkOrder()">
+                            Cancel
+                        </div>
+                    </div>
+                    <div class="col"></div>
+                </div>
+            </form>
+        </div>
+    </ion-content>
+</ion-view>

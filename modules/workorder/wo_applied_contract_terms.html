@@ -1,0 +1,46 @@
+<div class="wo-applied-terms">
+    <ion-list ng-show="singleWorkOrder.appliedTerms.length > 0">
+        <ion-item class="cntHdr">
+            <div class="row">
+                <div class="col">
+                <b>{{"workorder.wo-applied-contract-terms.applied-contract-term-name" | translate}}</b>
+                </div>
+                <div class="col"></div>
+                <div class="col">
+                <b>{{"workorder.wo-applied-contract-terms.term" | translate}}</b>
+                </div>
+                <div class="col"><b>{{"workorder.wo-applied-contract-terms.contract-name" | translate}}</b></div>
+                <div class="col"><b>{{"workorder.wo-applied-contract-terms.contract-type" | translate}}</b></div>
+                <div class="col"><b>{{"workorder.wo-applied-contract-terms.asset-name" | translate}}</b></div>
+                <div class="col"><b>{{"workorder.wo-applied-contract-terms.product-name" | translate}}</b></div>
+                <!-- <div class="col"><b>Start Date</b></div>
+                <div class="col"><b>End Date</b></div>
+                <div class="col"><b>Material Covered</b></div>
+                <div class="col"><b>Labor Covered</b></div>
+                <div class="col"><b>Expense Covered</b></div> -->
+            </div>
+        </ion-item>
+        <ion-scroll direction="y" class="scroll-height">
+            <ion-item ng-repeat="appliedTerm in singleWorkOrder.appliedTerms">
+                <div class="row">
+                    <div class="col"> {{appliedTerm.Name}}</div>
+                    <div class="col"> {{appliedTerm.MedConnect__Warranty__c.Name}}</div>
+                    <div class="col"> {{appliedTerm.Contract_Name_MDSR__c}}</div>
+                    <div class="col"> {{appliedTerm.Contract_Type_MDSR__c}}</div>
+                    <div class="col"> {{appliedTerm.MedConnect__Work_Order__c.MedConnect__Asset__c.Name}}</div>
+                    <div class="col"> {{appliedTerm.Service_Product_MDSR__c}}</div>
+                    <!-- <div class="col"> {{appliedTerm.MedConnect__Warranty__c.MedConnect__Service_Maintenance_Contract__c.MedConnect__Start_Date__c}}</div>
+                    <div class="col"> {{appliedTerm.MedConnect__Warranty__c.MedConnect__Service_Maintenance_Contract__c.MedConnect__End_Date__c}}</div>
+                    <div class="col"> {{appliedTerm.MedConnect__Warranty__c.MedConnect__Material_Covered__c}}</div>
+                    <div class="col"> {{appliedTerm.MedConnect__Warranty__c.MedConnect__Labor_Covered__c}}</div>
+                    <div class="col"> {{appliedTerm.MedConnect__Warranty__c.MedConnect__Expense_Covered__c}}</div> -->
+                </div>
+            </ion-item>
+        </ion-scroll>
+    </ion-list>
+    <div class="card" ng-show="singleWorkOrder.appliedTerms.length == 0">
+        <div class="item item-text-wrap">
+            {{"workorder.wo-applied-contract-terms.no-applied-contract-terms-found" | translate}}
+        </div>
+    </div>
+</div>

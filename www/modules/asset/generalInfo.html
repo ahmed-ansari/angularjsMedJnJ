@@ -1,0 +1,168 @@
+<ion-scroll direction="y" class="scrollAtHtGI">
+    <div class="list">
+        <div class="item">
+            {{"asset.generalInfo.assetName" | translate}}<span class="item-note" ng-bind="singleasset.asset.Name"></span>
+        </div>
+        <div class="item">
+            {{"asset.generalInfo.account" | translate}}
+            <span class="item-note">
+            {{getVariableDataFromObject(singleasset.asset,'Account__r','Name')}}
+        </span>
+        </div>
+        <div class="item">
+             {{"asset.generalInfo.product" | translate}}
+            <span class="item-note">
+            {{getVariableDataFromObject(singleasset.asset,'Product__r','Name')}}
+        </span>
+        </div>
+        <div class="item">
+            {{"asset.generalInfo.productPartNumber" | translate}}
+            <span class="item-note">
+            {{singleasset.asset.Product_Part_Number_MDSR__c}}
+        </span>
+        </div>
+        <div class="item">
+            {{"asset.generalInfo.productDescription" | translate}}
+            <span class="item-note">
+            {{singleasset.asset.Product_Description_MDSR__c}}
+        </span>
+        </div>
+        <div class="item">
+            {{"asset.generalInfo.batchNumber" | translate}}
+            <span class="item-note">
+            {{getVariableDataFromObject(singleasset.asset,'Batch_Master__r','Name')}}
+        </span>
+        </div>
+        <div class="item">
+            {{"asset.generalInfo.lotNumber" | translate}}
+            <span class="item-note">
+            {{getVariableDataFromObject(singleasset.asset,'Lot_Master1__r','Name')}}
+        </span>
+        </div>
+        <div class="item">
+            {{"asset.generalInfo.SerialNo" | translate}} <span class="item-note">{{getVariableDataFromObject(singleasset.asset,'Serial_No__c')}}</span>
+        </div>
+        <div class="item">
+             {{"asset.generalInfo.type" | translate}} 
+            <span class="item-note">
+            {{getVariableDataFromObject(singleasset.asset,'Type__c')}}
+        </span>
+        </div>
+
+         <div class="item">
+            {{"asset.generalInfo.notForHumanUse" | translate}}
+            <span class="item-note">
+              <span class="step size-21">
+            <i class="icon" ng-class="singleasset.asset.Not_For_Human_Use_MDSR__c ? 'ion-android-checkbox':'ion-android-checkbox-outline-blank'"></i></span>
+            <!-- {{singleasset.asset.Not_For_Human_Use_MDSR__c}} -->
+        </span>
+        </div>
+
+        <div class="item">
+             {{"asset.generalInfo.downTime" | translate}}
+            <span class="item-note">
+           {{singleasset.asset.Down_Time_MDSR__c}}
+        </span>
+        </div>
+
+        <div class="item">
+             {{"asset.generalInfo.disputedLocation" | translate}}
+            <span class="item-note">
+            <span class="step size-21">
+                <i class="icon" ng-class="singleasset.asset.Disputed_Location_MDSR__c ? 'ion-android-checkbox':'ion-android-checkbox-outline-blank'"></i></span>
+                <!-- {{singleasset.asset.Disputed_Location_MDSR__c}} -->
+            </span>
+        </div>
+         <div class="item">
+           {{"asset.generalInfo.legalHold" | translate}}
+            <span class="item-note">
+              <span class="step size-21">
+                <i class="icon" ng-class="singleasset.asset.Legal_Hold_MDSR__c ? 'ion-android-checkbox':'ion-android-checkbox-outline-blank'"></i>
+                </span>
+                <!-- {{singleasset.asset.Legal_Hold_MDSR__c}} -->
+            </span>
+        </div>
+
+        <div class="item">
+            {{"asset.generalInfo.referenceAble" | translate}} 
+            <span class="item-note">
+            {{getVariableDataFromObject(singleasset.asset,'Referenceable__c')}}
+        </span>
+        </div>
+        <div class="item">
+             {{"asset.generalInfo.recall" | translate}} 
+            <span class="item-note">
+             <span class="step size-21">
+              <i class="icon" ng-class="singleasset.asset.MedConnect__Recall__c ? 'ion-android-checkbox-outline':'ion-android-checkbox-outline-blank'"></i>
+              </span>
+            <!-- {{getVariableDataFromObject(singleasset.asset,'Recall__c')}} -->
+        </span>
+        </div>
+        <div class="item">
+             {{"asset.generalInfo.udi" | translate}} 
+            <span class="item-note">
+            {{getVariableDataFromObject(singleasset.asset,'UDI__c')}}
+        </span>
+        </div>
+        <div class="item">
+            {{"asset.generalInfo.usageStatus" | translate}}  <span class="item-note">{{getVariableDataFromObject(singleasset.asset,'Usage_Status__c')}}</span>
+        </div>
+        <div class="item">
+             {{"asset.generalInfo.installedDate" | translate}}   <span class="item-note">{{getVariableDataFromObject(singleasset.asset,'Installed_Date__c') |  date:'MM/dd/yyyy'}}</span>
+        </div>
+        <div class="item">
+           {{"asset.generalInfo.installedBy" | translate}}  <span class="item-note">{{getVariableDataFromObject(singleasset.asset,'Installed_By__r','Name') |  date:'MM/dd/yyyy'}}</span>
+        </div>
+        <div class="item">
+            {{"asset.generalInfo.expDate" | translate}} <span class="item-note">{{getVariableDataFromObject(singleasset.asset,'Expiration_Date__c') |  date:'MM/dd/yyyy'}}</span>
+        </div>
+        <div class="item">
+            {{"asset.generalInfo.serviceDueOn" | translate}}  <span class="item-note">{{getVariableDataFromObject(singleasset.asset,'Service_Due_On__c')}}</span>
+        </div>
+        <div class="item">
+            {{"asset.generalInfo.note" | translate}}
+            <span class="item-note">
+            {{getVariableDataFromObject(singleasset.asset,'Note_MDSR__c')}}
+        </span>
+        </div>
+        <div class="item">
+           {{"asset.generalInfo.lastServiceDate" | translate}}
+            <span class="item-note">
+            {{getVariableDataFromObject(singleasset.asset,'Last_Serviced_Date__c') |  date:'MM/dd/yyyy'}}
+        </span>
+        </div>
+        <div class="item">
+            {{"asset.generalInfo.nextPmDate" | translate}}
+            <span class="item-note">
+            {{singleasset.asset.Next_PM_Date2_MDSR__c |  date:'MM/dd/yyyy'}}
+        </span>
+        </div>
+        <div class="item">
+           {{"asset.generalInfo.pmFrequencyUnit" | translate}} 
+            <span class="item-note">
+            {{singleasset.asset.Frequency_Unit_MDSR__c}}
+        </span>
+        </div>
+        <div class="item">
+           {{"asset.generalInfo.pmFrequencyNumber" | translate}}  
+            <span class="item-note">
+            {{singleasset.asset.Frequency_MDSR__c}}
+        </span>
+        </div>
+        <div class="item">
+             {{"asset.generalInfo.lastPMDate" | translate}}<span class="item-note">{{singleasset.asset.Last_PM_Date_MDSR__c |  date:'MM/dd/yyyy'}}</span>
+        </div>
+        <div class="item">
+            {{"asset.generalInfo.usageCycleCount" | translate}} <span class="item-note">{{singleasset.asset.Usage_Cycle_Count_MDSR__c}}</span>
+        </div>
+        <div class="item">
+            {{"asset.generalInfo.hardwareVersion" | translate}}<span class="item-note">{{getVariableDataFromObject(singleasset.asset,'Hardware_Version__r','Name')}}</span>
+        </div>
+        <div class="item">
+            {{"asset.generalInfo.softwareVersion" | translate}}<span class="item-note">{{getVariableDataFromObject(singleasset.asset,'Software_Version__r','Name')}}</span>
+        </div>
+        <div class="item">
+           {{"asset.generalInfo.currentLoc" | translate}} <span class="item-note">{{getVariableDataFromObject(singleasset.asset,'Current_Location__c')}}</span>
+        </div>
+    </div>
+</ion-scroll>

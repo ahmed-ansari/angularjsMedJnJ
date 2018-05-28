@@ -1,0 +1,68 @@
+<ion-modal-view>
+    <ion-header-bar>
+        <button ng-click="closeModal()" class="button button-icon icon"> <i class="ion-close size-12" ></i></button>
+        <h1 class="title">{{"workorder.lookup_serialized_ports.select-asset" | translate}}</h1>
+    <!--<h1 class="title">Select Asset</h1>
+        <span ng-click="closeModal()">X</span> -->
+	</ion-header-bar>
+    <ion-content>
+        <div class="bar bar-header item-input-inset" style="position: relative;">
+            <label class="item-input-wrapper">
+                <i class="icon ion-ios-search placeholder-icon"></i>
+                <input type="search" placeholder="{{'workorder.lookup_serialized_ports.paceholder' | translate}}" ng-model="installAsset.searchasset2name">
+            </label>
+            <i class="icon ion-close-round" ng-click="installAsset.searchasset2name = ''" ng-show="installAsset.searchasset2name.length > 0" style="position: absolute;top: 6px;"></i>
+            <button class="button button-positive" ng-click="installAsset.search_seriailized_port();">
+                {{"workorder.lookup_serialized_ports.search" | translate}}
+            </button>
+        </div>
+        <div class="card" ng-if="installAsset.searchAsset2Error">
+            <div class="item item-text-wrap">
+                {{installAsset.searchAsset2Error}}
+            </div>
+        </div>
+        <ion-list ng-if="installAsset.Assets2">
+            <ion-item>
+                <div class="row">
+                    <div class="col item-text-wrap"><b>{{"workorder.lookup_serialized_ports.assetName" | translate}}</b></div>
+                    <div class="col item-text-wrap"><b>{{"workorder.lookup_serialized_ports.serialNo" | translate}}</b></div>
+                    <div class="col item-text-wrap"><b>{{"workorder.lookup_serialized_ports.product" | translate}}</b></div>
+                    <!-- <div class="col item-text-wrap"><b>Location Account</b></div> -->
+                    <div class="col item-text-wrap"><b>{{"workorder.lookup_serialized_ports.lotNumber" | translate}}</b></div>
+                    <div class="col item-text-wrap"><b>{{"workorder.lookup_serialized_ports.batchNumber" | translate}}</b></div>
+                    <!-- <div class="col item-text-wrap"><b>Installed Date</b></div>
+                    <div class="col item-text-wrap"><b>Installed By</b></div> -->
+                </div>
+            </ion-item>
+            <ion-item ng-repeat="asset in installAsset.Assets2">
+                <div class="row ">
+                    <div class="col item-text-wrap ">
+                        <a href="# " ng-click="installAsset.select_seriailized_port(asset.Id, asset.Name) ">{{asset.Name}}</a>
+                    </div>
+                    <div class="col item-text-wrap ">
+                        {{asset.MedConnect__Serial_No__c}}
+                    </div>
+                    <div class="col item-text-wrap ">
+                        {{asset.MedConnect__Product__r.Name}}
+                    </div>
+                    <div class="col item-text-wrap ">
+                        {{asset.MedConnect__Lot_Master1__r.Name}}
+                    </div>
+                    <div class="col item-text-wrap ">
+                        {{asset.MedConnect__Batch_Master__r.Name}}
+                    </div>
+                   <!--  <div class="col item-text-wrap ">
+                        {{asset.MedConnect__Installed_Date__c}}
+                    </div>
+                    <div class="col item-text-wrap ">
+                        {{asset.MedConnect__Installed_By__r.Name}}
+                    </div> -->
+                </div>
+            </ion-item>
+        </ion-list>
+        <div class="card" ng-show="installAsset.no_asset2">
+            <div class="item item-text-wrap">
+                <p>{{"workorder.lookup_serialized_ports.no-records-found" | translate}}</p>
+            </div>
+    </ion-content>
+</ion-modal-view>

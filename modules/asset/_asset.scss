@@ -1,0 +1,25 @@
+.item-asset {
+    a {
+        text-decoration: none;
+    }
+    .icon {
+        font-size: 14px !important;
+        align-items: baseline;
+        padding-top: 2%;
+    }
+    .button{
+    	color: $activeBlue !important;
+        background: #fff;
+    }
+}
+
+.bar-header .ion-close-round {
+        margin-top: 6px !important;
+        padding: 0 4px !important;
+        height: 32px;
+}
+.pad-0 {
+    padding:0 !important;
+}
+
+ 

@@ -1,0 +1,102 @@
+<ion-view title='{{"workorder.add_quote.quote" | translate}}'>
+    <ion-nav-buttons side="right">
+        <div syncup></div>
+        <div offline></div>
+        <div ng-show="quote.isLock">
+            <i class="icon ion-ios-locked step size-32" style="color:#5E747F;"></i>
+        </div>
+    </ion-nav-buttons>
+    <ion-content padding="true">
+        <div class="add-quote">
+            <br>
+            <div class="row detail-top-blue-banner white-btm-border contact-detail">
+                <div class="col">
+                    <h3 ng-bind="(quote.quoteId && quote.quoteId != 'null') ? ('workorder.add_quote.editQuote' | translate): ('workorder.add_quote.newQuote' | translate)"></h3>
+                </div>
+            </div>
+            <form name="quote.quoteForm" novalidate="" ng-submit="quote.quoteSave(quote.quoteForm)">
+                <div class="row">
+                    <div class="col">
+                        <label class="input-label">{{"workorder.add_quote.workOrder" | translate}}</label>
+                        <label class="input-label">{{quote.workOrderName}}</label>
+                    </div>
+                    <div class="col">
+                        <label class="input-label">{{"workorder.add_quote.account" | translate}}</label>
+                        <label class="input-label">{{quote.accountName}}</label>
+                    </div>
+                    <div class="col">
+                        <label class="input-label">{{"workorder.add_quote.contact" | translate}}</label>
+                        <label class="input-label">{{quote.contactName}}</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <label class="input-label">{{"workorder.add_quote.status" | translate}}</label>
+                        <select name="type" id="statusType" class="select_parent_width custom-select images" ng-model="quote.quo.statusType">
+                            <option value="">{{"workorder.add_quote.type" | translate}}</option>
+                            <option value="Draft">{{"workorder.add_quote.draft" | translate}}</option>
+                            <option value="Presented">{{"workorder.add_quote.presented" | translate}}</option>
+                            <option value="Accepted">{{"workorder.add_quote.accepted" | translate}}</option>
+                            <option value="Rejected">{{"workorder.add_quote.rejected" | translate}}</option>
+                            <option value="Revised">{{"workorder.add_quote.revised" | translate}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <label class="input-label">{{"workorder.add_quote.discountType" | translate}}</label>
+                        <select name="type" id="discountType" class="select_parent_width custom-select images" ng-model="quote.quo.discountType">
+                            <option value="">{{"workorder.add_quote.type" | translate}}</option>
+                            <option value="Percent">{{"workorder.add_quote.percent" | translate}}</option>
+                            <option value="Amount">{{"workorder.add_quote.amount" | translate}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col images">
+                        <label class="item-input item-floating-label">
+                            <span class="input-label">{{"workorder.add_quote.description" | translate}}</span>
+                            <textarea name="description" id="" cols="30" rows="5" ng-model="quote.quo.description" ng-maxlength="240"></textarea>
+                        </label>
+                        <div class="form-errors" ng-messages="quote.quoteForm.description.$error" ng-show='quote.quoteForm.$submitted || quote.quoteForm.description.$dirty'>
+                             <div class="form-error" ng-message="maxlength">{{"workorder.add_quote.valueTooLong" | translate}}<i class="ion-information-circled"></i> </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col images" style="padding-bottom: 1%;">
+                        <label class="item-input item-floating-label" ng-class="{ 'has-error' : quote.quoteForm.valid_till.$invalid && quote.quoteForm.valid_till.$dirty}">
+                            <span class="input-label">{{"workorder.add_quote.validTill" | translate}}</span>
+                            <input type="datetime-local" name="start_time" ng-model="quote.quoteForm.valid_till" required>
+                        </label>
+                        <div class="form-errors" ng-messages="quote.quoteForm.valid_till.$error" ng-show='quote.quoteForm.$submitted || quote.quoteForm.valid_till.$dirty'>
+                            <div class="form-error" ng-message="required">{{"workorder.add_quote.requiredField" | translate}}<i class="ion-information-circled"></i> </div>
+                        </div>
+                </div>
+                <div class="row" ng-if="quote.quoteId.length > 4 && quote.quoteId != 'null'">
+                    <div class="col">
+                        <label class="item-input item-floating-label">
+                            <span class="input-label">{{"workorder.add_quote.reasonForChange" | translate}}</span>
+                            <textarea name="change_reason" id="" cols="30" rows="5" ng-required="true" ng-model="quote.quo.change_reason" ng-maxlength="240"></textarea>
+                        </label>
+                        <div class="form-errors" ng-messages="quote.quoteForm.change_reason.$error" ng-show='quote.quoteForm.$submitted || quote.quoteForm.change_reason.$dirty'>
+                            <div class="form-error" ng-message="required">{{"workorder.add_quote.requiredField" | translate}}<i class="ion-information-circled"></i> </div>
+                             <div class="form-error" ng-message="maxlength">{{"workorder.add_quote.valueTooLong" | translate}}<i class="ion-information-circled"></i> </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <input type="submit" class="button button-positive" value='{{"workorder.add_quote.save" | translate}}'>
+                    </div>
+                    <div class="col">
+                        <div class="button button-outline  button-assertive" ng-click="quote.backToWorkOrder()">
+                            {{"workorder.add_quote.cancel" | translate}}
+                        </div>
+                    </div>
+                    <div class="col"></div>
+                    <div class="col"></div>
+                </div>
+            </form>
+        </div>
+    </ion-content>
+</ion-view>

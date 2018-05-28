@@ -1,0 +1,56 @@
+<ion-scroll direction="y" class="scrollPtHt">
+<div class="wo-codes">
+    <div class="codes-analysis" ng-show="singleRA.analysisCodes.length">
+        <h3>{{"workorder.wo_ra_codes.analysis-codes" | translate}}</h3>
+        <ion-list>
+            <ion-item>
+                <div class="row">
+                    <div class="col item-text-wrap"><b>{{"workorder.wo_ra_codes.code" | translate}}</b></div>
+                    <div class="col item-text-wrap"><b>{{"workorder.wo_ra_codes.code-description" | translate}}</b></div>
+                    <div class="col item-text-wrap"><b>{{"workorder.wo_ra_codes.code-level" | translate}}</b></div>
+                    <div class="col item-text-wrap"><b>{{"workorder.wo_ra_codes.remove" | translate}}</b></div>
+                </div>
+            </ion-item>
+            <ion-item ng-repeat="analysis in singleRA.analysisCodes">
+                <div class="row">
+                    <div class="col item-text-wrap"> {{analysis.MedConnect__Code__r.Name}} </div>
+                    <div class="col item-text-wrap"> {{analysis.MedConnect__Code__r.MedConnect__Description__c}}</div>
+                    <div class="col item-text-wrap"> {{analysis.MedConnect__Code__r.MedConnect__Code_Level__c}}</div>
+                    <div class="col item-text-wrap" ng-click="singleRA.removeCode(analysis.Id, analysis.MedConnect__Code__r.Name)">
+                      <span class="step size-24"> <i class="icon ion-android-remove-circle"></i></span>
+                      </div> 
+                </div>
+            </ion-item>
+        </ion-list>
+    </div>
+        <div class="codes-analysis" ng-show="singleRA.faultCodes.length">
+        <br>
+        <h3>Fault Codes</h3>
+        <ion-list>
+            <ion-item>
+                <div class="row">
+                    <div class="col item-text-wrap"><b>{{"workorder.wo_ra_codes.code" | translate}}</b></div>
+                    <div class="col item-text-wrap"><b>{{"workorder.wo_ra_codes.code-description" | translate}}</b></div>
+                    <div class="col item-text-wrap"><b>{{"workorder.wo_ra_codes.code-level" | translate}}</b></div>
+                    <div class="col item-text-wrap"><b>{{"workorder.wo_ra_codes.remove" | translate}}</b></div>
+                </div>
+            </ion-item>
+            <ion-item ng-repeat="fault in singleRA.faultCodes">
+                <div class="row">
+                    <div class="col item-text-wrap"> {{fault.MedConnect__Code__r.Name}} </div>
+                    <div class="col item-text-wrap"> {{fault.MedConnect__Code__r.MedConnect__Description__c}}</div>
+                    <div class="col item-text-wrap"> {{fault.MedConnect__Code__r.MedConnect__Code_Level__c}}</div>
+                    <div class="col item-text-wrap" ng-click="singleRA.removeCode(fault.Id, fault.MedConnect__Code__r.Name)">
+                     <span class="step size-24"><i class="icon ion-android-remove-circle"></i></span>
+                    </div>
+                </div>
+            </ion-item>
+        </ion-list>
+    </div>
+    <div class="card" ng-show="singleRA.faultCodes.length == 0 && singleRA.analysisCodes.length == 0">
+        <div class="item item-text-wrap">
+            {{"workorder.wo_ra_codes.no-data-available" | translate}}
+        </div>
+    </div>
+</div>
+</ion-scroll>

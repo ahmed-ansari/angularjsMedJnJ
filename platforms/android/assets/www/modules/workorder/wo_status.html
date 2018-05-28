@@ -1,0 +1,41 @@
+<ion-view title='{{"workorder.wo.status.work-order-change-processing-status" | translate}}'>
+<ion-nav-buttons side="right">
+      <div syncup></div>
+        <div offline></div>
+        <div username></div>
+    </ion-nav-buttons>
+    <ion-content>
+        <div class="row detail-top-blue-banner contact-detail">
+            <div class="col col-30">
+                <p>{{"workorder.wo.status.work-order" | translate}}</p>
+                <p ng-bind="::wostatus.woName"></p>
+            </div>
+        </div>
+        <div class="woActionButtons">
+            <div class="list">
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label">{{"workorder.wo.status.user-name" | translate}}</span>
+                    <input type="text" placeholder="Enter User Name" ng-model= "wostatus.username" required/>
+                </label>
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label">{{"workorder.wo.status.password" | translate}}</span>
+                    <input type="password" placeholder="Enter Password" ng-model="wostatus.password" required/>
+                </label>
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label topPadding">{{"workorder.wo.status.change-processing-status" | translate}}</span>
+                    <select name="type" id="type" class="select_parent_width custom-select rightPosition" ng-model="wostatus.type">
+                        <option value="">-- {{"workorder.wo.status.select-status" | translate}} --</option>
+                        <option value="Completed">{{"workorder.wo.status.completed" | translate}}</option>
+                        <option value="Closed">{{"workorder.wo.status.closed" | translate}}</option>
+                    </select>
+                </label>
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label topPadding">{{"workorder.wo.status.comments" | translate}}</span>
+                    <textarea name="wostatus_comments" id="" cols="30" rows="5" ng-model="wostatus.comments" ng-maxlength="240"></textarea>
+                </label>
+            </div>
+             <button class="button button-block button-positive" ng-click="wostatus.changeProcessingStatus()">{{"workorder.wo.status.electronically-sign" | translate}}</button>
+             <button class="button button-block button-clear button-assertive" ng-click="wostatus.clearFields()">{{"workorder.wo.status.clear" | translate}}</button>
+        </div>
+    </ion-content>
+</ion-view>

@@ -1,0 +1,16 @@
+<ion-popover-view class="full-popover" style="height: 380px !important;">
+    <ion-content>
+        <div class="list" ng-click="singleRA.popover.hide()">
+            <a class="item" href="#/app/add-repair-analysis/{{singleRA.workOrderID}}/{{singleRA.ra_id}}" ><i class="icon ion-edit"></i> {{"workorder.wo_popover_edit_repairAnalysis.edit" | translate}}</a>
+            <a class="item" href="#/app/analysis-code"><i class="icon ion-android-add-circle"></i> {{"workorder.wo_popover_edit_repairAnalysis.analysis" | translate}}  </a>
+            <a class="item" href="#/app/fault-code"><i class="icon ion-android-add-circle"></i> {{"workorder.wo_popover_edit_repairAnalysis.fault" | translate}} </a>
+            
+            <a class="item" ng-click="singleRA.goToTest()" ><i class="icon ion-android-add-circle"></i> {{"workorder.wo_popover_edit_repairAnalysis.test" | translate}} </a>
+            <a class="item" ng-click="singleRA.goToUninstall()"><i class="icon ion-minus-circled"></i> {{"workorder.wo_popover_edit_repairAnalysis.uninstall" | translate}}</a>     
+           
+            <a class="item" ng-click="singleRA.goToInstall()" ><i class="icon ion-android-add-circle"></i> {{"workorder.wo_popover_edit_repairAnalysis.install" | translate}}</a>
+            <a class="item" ng-click="singleRA.goToUpdateAsset()" ><i class="icon ion-ios-compose"></i> {{"workorder.wo_popover_edit_repairAnalysis.update-asset" | translate}}</a>
+	    	          
+        </div>
+    </ion-content>
+</ion-popover-view>

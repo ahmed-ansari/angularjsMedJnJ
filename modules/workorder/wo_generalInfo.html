@@ -1,0 +1,42 @@
+<ion-scroll direction="y" class="scroll-height">
+  <div class="list">
+    <div class="item">
+        {{"workorder.wo-general-info.type" | translate}}<span class="item-note" ng-bind="singleWorkOrder.WO.MedConnect__Type__c"></<span>
+    </div>
+    <div class="item">
+        {{"workorder.wo-general-info.priority" | translate}}<span class="item-note" ng-bind="singleWorkOrder.WO.WO_Priority_MDSR__c"></<span>
+    </div>
+    <div class="item">
+        {{"workorder.wo-general-info.processing-status" | translate}} <span class="item-note" ng-bind="singleWorkOrder.WO.MedConnect__Processing_Status__c"></span>
+    </div>
+    <div class="item">
+        {{"workorder.wo-general-info.time-required" | translate}} <span class="item-note" ng-bind="singleWorkOrder.WO.MedConnect__Time_Required_Hr__c"></span>
+    </div>
+    <div class="item">
+        {{"workorder.wo-general-info.service-request" | translate}} <span class="item-note" ng-bind="singleWorkOrder.WO.MedConnect__Service_Request__r.Name"></span>
+    </div>
+    <div class="item">
+        {{"workorder.wo-general-info.incident" | translate}} <span class="item-note" ng-bind="singleWorkOrder.WO.MedConnect__Incident__c"></span>
+    </div>
+    <div class="item">
+        {{"workorder.wo-general-info.location-account" | translate}} <span class="item-note" ng-bind="singleWorkOrder.WO.Location_Account_MDSR__c"></span>
+    </div>
+    <div class="item">
+        {{"workorder.wo-general-info.event-date" | translate}}<span class="item-note" ng-bind="singleWorkOrder.WO.WO_Event_Date_MDSR__c"></span>
+    </div>
+    <div class="item">
+        {{"workorder.wo-general-info.customer-interaction-date" | translate}}<span class="item-note" ng-bind="singleWorkOrder.WO.WO_Date_Reported_MDSR__c"></span>
+    </div>
+    <div class="item">
+        {{"workorder.wo-general-info.conclusion-code" | translate}}<span class="item-note" ng-bind="singleWorkOrder.WO.WO_Conclusion_Code_MDSR__c"></span>
+    </div>
+    <div class="item">
+        {{"workorder.wo-general-info.warranty-application" | translate}}<span class="item-note" ng-bind="singleWorkOrder.WO.MedConnect__Warranty_Application_Date_Update_Reason__c"></span>
+    </div>
+    <div class="item item-divider">
+        {{"workorder.wo-general-info.description" | translate}}
+    </div>
+    <span class="item" ng-bind="singleWorkOrder.WO.MedConnect__Comments__c"></span>
+</div>
+
+</ion-scroll>

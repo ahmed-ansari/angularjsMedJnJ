@@ -1,0 +1,264 @@
+<ion-view title="Order Line Item">
+    <ion-content>
+        <div class="install-asset">
+            <div class="row detail-top-blue-banner white-btm-border module-detail">
+                <div class="col">
+                    <h3>New Order Line Item</h3>
+                </div>
+            </div>
+            <div class="subHeader">
+                <!-- <b>Selections</b> -->
+            </div>
+            <form name="neworderitem.orderForm" novalidate="" class="orderForm">
+                <div class="row">
+                    <div class="col">
+                        <label class="item-input item-floating-label">
+                            <span class="input-label">Order</span>
+                            <p>{{neworderitem.orderData.Name}}</p>
+                        </label>
+                    </div>
+                    <div class="col images" style="padding: 0">
+                        <select name="type" id="type" class="select_parent_width custom-select" ng-model="neworderitem.formData.type" required>
+                            <option value="">--Type--</option>
+                            <option value="Replenishment">Replenishment</option>
+                            <option value="Inventory Transfer">Inventory Transfer</option>
+                            <option value="Adjustment">Adjustment</option>
+                            <option value="Loaner">Loaner</option>
+                            <option value="Return">Return</option>
+                        </select>
+                        <div class="form-errors" ng-messages="neworderitem.orderForm.type.$error" ng-show='neworderitem.orderForm.$submitted || neworderitem.orderForm.type.$dirty'>
+                            <div class="form-error" ng-message="required">This field is required <i class="ion-information-circled"></i> </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col pos_rel">
+                        <label class="item-input item-floating-label prodLabel">
+                            <span class="input-label">Product</span>
+                            <input type="text" name="lineitem_product" ng-model="neworderitem.productName" ng-disabled="true">
+                        </label>
+                    </div>
+                    <div class="col col-10">
+                        <span class="wid-auto button ion-search icon" ng-click="neworderitem.loadProducts()"></span>
+                    </div>
+                    <div class="col pos_rel">
+                        <label class="item-input item-floating-label prodLabel">
+                            <span class="input-label">Asset</span>
+                            <input type="text" name="lineitem_asset" ng-model="neworderitem.AssetName" ng-disabled="true">
+                        </label>
+                    </div>
+                    <div class="col col-10">
+                        <span class="wid-auto button ion-search icon" ng-click="neworderitem.loadAssets()"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col pos_rel">
+                        <label class="item-input item-floating-label prodLabel">
+                            <span class="input-label"> Source Inventory</span>
+                            <input type="text" name="lineitem_src_inventory" ng-model="neworderitem.sourceInventory" ng-disabled="true">
+                        </label>
+                    </div>
+                    <div class="col col-10">
+                        <span class=" wid-auto button ion-search icon" ng-click="neworderitem.loadSrcInventory()"></span>
+                    </div>
+                    <div class="col pos_rel">
+                        <label class="item-input item-floating-label prodLabel">
+                            <span class="input-label">Destination Inventory</span>
+                            <input type="text" name="lineitem_dest_inventory" ng-model="neworderitem.destInventory" ng-disabled="true">
+                        </label>
+                    </div>
+                    <div class="col col-10">
+                        <span class="wid-auto button ion-search icon" ng-click="neworderitem.loadDestInventory()"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col images">
+                        <select name="condition" id="condition" class="select_parent_width custom-select" ng-model="neworderitem.formData.condition">
+                            <option value=''> --Condition-- </option>
+                            <option value="Usable">Usable</option>
+                            <option value="Unusable">Unusable</option>
+                        </select>
+                    </div>
+                    <div class="col images">
+                        <select name="status" id="status" class="select_parent_width custom-select" ng-model="neworderitem.formData.status">
+                            <option value=''> --Status-- </option>
+                            <option value="Open">Open</option>
+                            <!-- <option value="Awaiting Receipt">Awaiting Receipt</option>
+                            <option value="Partially Received">Partially Received</option>
+                            <option value="Awaiting Shipment">Awaiting Shipment</option>
+                            <option value="Shipped">Shipped</option>
+                            <option value="Received by Customer">Received by Customer</option> -->
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <p>Quantity Expected</p>
+                        <p>0</p>
+                        <!-- <label class="item-input item-floating-label" >
+                            <span class="input-label">Quantity Expected</span>
+                             <p class="leftMargin">val </p>
+                        </label> -->
+                    </div>
+                    <div class="col">
+                        <label class="item-input item-floating-label prodLabel" ng-class="{ 'has-error' : neworderitem.orderForm.lineitem_src_inventory.$invalid && neworderitem.orderForm.lineitem_src_inventory.$dirty}">
+                            <span class="input-label"> Transaction Quantity</span>
+                            <input type="tel" id="lineitem_quantity" name="lineitem_quantity" ng-model="neworderitem.formData.quantity" class="lineitem" ng-pattern="/^[0-9]{1,9}$/" required>
+                        </label>
+                        <div class="form-errors" ng-messages="neworderitem.orderForm.lineitem_quantity.$error" ng-show='neworderitem.orderForm.$submitted || neworderitem.orderForm.lineitem_quantity.$dirty'>
+                            <div class="form-error" ng-message="pattern"> Invalid Number <i class="ion-information-circled"></i> </div>
+                            <div class="form-error" ng-message="required">This field is required <i class="ion-information-circled"></i> </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col">
+                        <p>Total Quantity Shipped</p>
+                        <p>0</p>
+                    </div>
+                    <div class="col">
+                        <p>Total Quantity Received</p>
+                        <p>0</p>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col pos_rel">
+                        <label class="item-input item-floating-label">
+                            <span class="input-label">Source Account</span>
+                            <input type="text" name="source_account" ng-model="neworderitem.selected_source_account_name"  ng-disabled="true">
+                        </label>
+                    </div>
+                    <div class="col col-10">
+                        <span class="wid-auto button ion-search icon" ng-click="neworderitem.loadSourceAccounts()"></span>
+                    </div>
+                    <div class="col pos_rel">
+                        <label class="item-input item-floating-label">
+                            <span class="input-label">Destination Account</span>
+                            <input type="text" name="destination_account" ng-model="neworderitem.selected_dest_account_name"  ng-disabled="true">
+                        </label>
+                    </div>
+                    <div class="col col-10">
+                        <span class="wid-auto button ion-search icon" ng-click="neworderitem.loadDestAccounts()"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <label class="item-input item-floating-label prodLabel" ng-class="{ 'has-error' : neworderitem.orderForm.track_num.$invalid && neworderitem.orderForm.track_num.$dirty}">
+                            <span class="input-label">Tracking Number</span>
+                            <input type="tel" name="track_num" ng-model="neworderitem.formData.track_num" ng-pattern="/^[0-9]{1,9}$/">
+                        </label>
+                        <div class="form-errors" ng-messages="neworderitem.orderForm.track_num.$error" ng-show='neworderitem.orderForm.$submitted || neworderitem.orderForm.track_num.$dirty'>
+                            <div class="form-error" ng-message="pattern"> Invalid Number <i class="ion-information-circled"></i> </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="col images">
+                            <select name="ship_method" id="ship_method" class="select_parent_width custom-select" ng-model="neworderitem.formData.ship_method">
+                                <option value=''> --Shipping Method-- </option>
+                                <option value="First Overnight">First Overnight</option>
+                                <option value="Priority Overnight">Priority Overnight</option>
+                                <option value="Standard Overnight">Standard Overnight</option>
+                                <option value="2nd Day Delivery">2nd Day Delivery</option>
+                                <option value="Saturday Delivery">Saturday Delivery</option>
+                                <option value="International Delivery">International Delivery</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                      <p>Billable</p>
+                    </div>
+                    <div class="col">
+                        <ion-checkbox ng-model="neworderitem.formData.billable" class="no-border"></ion-checkbox>
+                    </div>
+                    <div class="col  col-50">
+                        <label class="item-input item-floating-label" ng-class="{ 'has-error' : neworderitem.orderForm.courier.$invalid && neworderitem.orderForm.courier.$dirty}">
+                            <span class="input-label">Courier</span>
+                            <input type="tel" name="courier" ng-model="neworderitem.formData.courier" ng-maxlength="50">
+                        </label>
+                        <div class="form-errors" ng-messages="neworderitem.orderForm.courier.$error" ng-show='neworderitem.orderForm.$submitted || neworderitem.orderForm.courier.$dirty'>
+                            <div class="form-error" ng-message="maxlength">More than 50 Characters <i class="ion-information-circled"></i> </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <label class="item-input item-floating-label">
+                            <span class="input-label">Expected Ship Date</span>
+                            <input type="datetime-local" name="ship_date" ng-model="neworderitem.formData.ship_date">
+                        </label>
+                    </div>
+                    <div class="col">
+                        <label class="item-input item-floating-label">
+                            <span class="input-label">Expected Delivery Date</span>
+                            <input type="datetime-local" name="delivery_date" ng-model="neworderitem.formData.delivery_date">
+                        </label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <label class="item-input item-floating-label" ng-class="{ 'has-error' : neworderitem.orderForm.route.$invalid && neworderitem.orderForm.route.$dirty}">
+                            <span class="input-label">Route</span>
+                            <input type="tel" name="route" ng-model="neworderitem.formData.route" ng-pattern="/^[0-9]{1,7}$/">
+                        </label>
+                        <div class="form-errors" ng-messages="neworderitem.orderForm.route.$error" ng-show='neworderitem.orderForm.$submitted || neworderitem.orderForm.route.$dirty'>
+                            <div class="form-error" ng-message="pattern"> Not Valid Number <i class="ion-information-circled"></i> </div>
+                        </div>
+                    </div>
+                    <div class="col col-10"></div>
+                    <div class="col ">
+                        <label class="item-input item-floating-label prodLabel" ng-class="{ 'has-error' : neworderitem.orderForm.curr_inventory_loc.$invalid && neworderitem.orderForm.curr_inventory_loc.$dirty}">
+                            <span class="input-label">Current Inventory Location</span>
+                            <input type="text" name="curr_inventory_loc" ng-model="neworderitem.curr_inventory_loc_name" class="lineitem" ng-disabled="true">
+                        </label>
+                    </div>
+                    <div class="col col-10">
+                        <span class="wid-auto button ion-search icon" ng-click="neworderitem.loadInventoryLocations()"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <p>UDI Number</p>
+                        <p>0</p>
+                        <!--   <label class="item-input item-floating-label" >
+                            <span class="input-label">UDI Number</span>
+                             <p class="leftMargin">val </p>
+                        </label> -->
+                    </div>
+                    <div class="col">
+                        <label class="item-input item-floating-label prodLabel" ng-class="{ 'has-error' : neworderitem.orderForm.po.$invalid && neworderitem.orderForm.po.$dirty}">
+                            <span class="input-label">PO#</span>
+                            <input type="tel" name="po" ng-model="neworderitem.formData.po" ng-pattern="/^[0-9]{1,9}$/">
+                        </label>
+                        <div class="form-errors" ng-messages="neworderitem.orderForm.po.$error" ng-show='neworderitem.orderForm.$submitted || neworderitem.orderForm.po.$dirty'>
+                            <div class="form-error" ng-message="pattern"> Invalid Number <i class="ion-information-circled"></i> </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">Urgent</div>
+                    <div class="col">
+                        <ion-checkbox ng-model="neworderitem.formData.urgent" class="no-border"></ion-checkbox>
+                    </div>
+                    <div class="col"></div>
+                    <div class="col"></div>
+                </div>
+                <div class="row buttonTop">
+                    <div class="col">
+                        <button class="button themeBtn" ng-click="neworderitem.save(neworderitem.orderForm)"> Save </button>
+                        <!-- ng-disabled="disableBtns" -->
+                    </div>
+                    <div class="col">
+                        <span class="button button-outline button-assertive" ng-click="neworderitem.backToOrder()"> Cancel </span>
+                    </div>
+                    <div class="col"></div>
+                    <div class="col"></div>
+                    <div class="col"></div>
+                </div>
+            </form>
+        </div>
+    </ion-content>
+</ion-view>

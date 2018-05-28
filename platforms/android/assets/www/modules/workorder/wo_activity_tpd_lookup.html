@@ -1,0 +1,23 @@
+<ion-modal-view>
+    <ion-header-bar>
+        <button ng-click="closeModal()" class="button button-icon icon"> <i class="ion-close size-12" ></i></button>
+        <h1 class="title" style="padding-left: 15px;">{{ "workorder.wo-activity-tpd-lookup.select-third-party-depot" | translate}}</h1>
+    <!--<h1 class="title">Select Third Party Depot</h1>
+        <span ng-click="closeModal()">X</span> -->
+	</ion-header-bar>
+    <ion-content>
+         <ion-list>
+            <ion-item ng-repeat="tpd in activity.tpd">
+                <div class="row">
+                    <div class="col">
+                        <a href="#" ng-click="activity.select_the_tpd(tpd.Id, tpd.Name)">{{tpd.Name}}</a>
+                    </div>
+                </div>
+            </ion-item>
+        </ion-list>
+        <div class="card" ng-show="activity.no_tpd_record">
+            <div class="item item-text-wrap">
+                <p>{{ "workorder.wo-activity-tpd-lookup.no-records-found" | translate}}</p>
+            </div>
+    </ion-content>
+</ion-modal-view>

@@ -1,0 +1,54 @@
+<ion-view title="{{'inventory.transactions_type_detail.inventory' | translate}}">
+    <ion-nav-buttons side="right">
+        <div syncup></div>
+        <div offline></div>
+        <div username></div>
+        <!--  <span class="step size-32">
+        <i class="icon ion-grid" ng-click="quoteExpenseData.popover.show($event)"></i>
+    </span> -->
+    </ion-nav-buttons>
+    <ion-content>
+        <div class="row detail-top-blue-banner white-btm-border contact-detail NameHdr">
+            <div class="col">
+                <h2 ng-bind="transType.detail.Name"></h2>
+            </div>
+        </div>
+        <div class="tab-container">
+            <tab-slide-box>
+                <div class="tsb-icons">
+                    <div class="tsb-ic-wrp">
+                        <ion-scroll direction="x" class="tsb-hscroll">
+                            <a href="javascript:;" class="ion-home1">{{"inventory.transactions_type_detail.quantity" | translate}}</a>
+                        </ion-scroll>
+                    </div>
+                </div>
+                <ion-slide-box>
+                    <ion-slide>
+                        <ion-scroll>
+                            <div class="list">
+                                <div class="item">
+                                    {{"inventory.transactions_type_detail.source_inventory" | translate}}<span class="item-note">{{transType.detail.MedConnect__Source_Inventory__r.Name}}</span>
+                                </div>
+                                <div class="item">
+                                    {{"inventory.transactions_type_detail.destination_inventory" | translate}}<span class="item-note">{{transType.detail.MedConnect__Destination_Inventory__r.Name}}</span>
+                                </div>
+                                <div class="item">
+                                    {{"inventory.transactions_type_detail.destination_inventory" | translate}}<span class="item-note">{{transType.detail.MedConnect__Destination_Inventory__r.Name}}</span>
+                                </div>
+                                <div class="item">
+                                    {{"inventory.transactions_type_detail.asset" | translate}}<span class="item-note">{{transType.detail.MedConnect__Asset__r.Name}}</span>
+                                </div>
+                                <div class="item">
+                                    {{"inventory.transactions_type_detail.product" | translate}}<span class="item-note">{{transType.detail.MedConnect__Product__r.Name}}</span>
+                                </div>
+                                <div class="item">
+                                    {{"inventory.transactions_type_detail.quantity" | translate}}<span class="item-note">{{transType.detail.MedConnect__Quantity__c}}</span>
+                                </div>
+                            </div>
+                        </ion-scroll>
+                    </ion-slide>
+                </ion-slide-box>
+            </tab-slide-box>
+        </div>
+    </ion-content>
+</ion-view>

@@ -1,0 +1,102 @@
+<ion-scroll direction="y" class="scrollPtHtGI">
+<div class="list">
+    <div class="item">
+        {{"product.generalInfo.distributor" | translate}}<span class="item-note">{{getVariableDataFromObject(singleproduct.product, 'Distributor__c')}}</span>
+    </div>
+    
+    <div class="item">
+        {{"product.generalInfo.consumer_site" | translate}}<span class="item-note"><a href="{{getVariableDataFromObject(singleproduct.product,'Consumer_site__c')}}" target="_blank">{{getVariableDataFromObject(singleproduct.product,'Consumer_site__c')}}</a></span>  
+    </div>
+
+    <div class="item">
+        {{"product.generalInfo.controlled_substance" | translate}} <span class="item-note">{{getVariableDataFromObject(singleproduct.product,'Controlled_Substance__c')}}</span>
+    </div> 
+
+    <div class="item">
+        {{"product.generalInfo.product_category" | translate}}<span class="item-note">{{getVariableDataFromObject(singleproduct.product,'Product_Category__c')}}
+        </span>
+    </div> 
+
+    <div class="item">
+        {{"product.generalInfo.price_type" | translate}}<span class="item-note">{{getVariableDataFromObject(singleproduct.product,'Price_Type__c')}}
+        <span>
+    </div>
+
+    <div class="item">
+        {{"product.generalInfo.device_class" | translate}}<span class="item-note">{{getVariableDataFromObject(singleproduct.product,'Device_Class__c')}}</span>
+    </div>
+
+    <div class="item">
+       {{"product.generalInfo.status" | translate}} <span class="item-note">{{getVariableDataFromObject(singleproduct.product,'Status__c')}}</span>
+    </div>
+    <div class="item">
+       {{"product.generalInfo.ship_method" | translate}} <span class="item-note">{{getVariableDataFromObject(singleproduct.product,'Ship_Method__c')}}</span>
+    </div>
+    <div class="item">
+        {{"product.generalInfo.uom" | translate}}<span class="item-note">{{getVariableDataFromObject(singleproduct.product,'UOM__c')}}</span>
+    </div>
+
+    <div class="item">
+        {{"product.generalInfo.structure_type" | translate}}<span class="item-note">{{getVariableDataFromObject(singleproduct.product, 'Structure_Type__c')}}</span>
+    </div>
+
+    <div class="item">
+       {{"product.generalInfo.quantity_in_each_uom" | translate}} <span class="item-note">{{getVariableDataFromObject(singleproduct.product,'Quantity_in_each_UOM__c')}}</span>
+    </div>
+    <div class="item">
+        {{"product.generalInfo.description" | translate}} <span class="item-note">{{getVariableDataFromObject(singleproduct.product,'Description__c')}}</span>
+    </div>
+    <div class="item">
+        {{"product.generalInfo.clinical_investigation_number" | translate}} <span class="item-note">{{getVariableDataFromObject(singleproduct.product,'Clinical_Investigation_Number__c')}}</span>
+    </div>
+    <div class="item">
+        {{"product.generalInfo.concomitant_products" | translate}}<span class="item-note">{{singleproduct.product.MedConnect__Similar_Product__r.Name}}</span>
+    </div>
+
+    <div class="item">
+        {{"product.generalInfo.model_number" | translate}} <span class="item-note">{{getVariableDataFromObject(singleproduct.product,'Model_Number__c')}}
+
+    </span>
+    </div>
+
+    <div class="item">
+        {{"product.generalInfo.catalog_number" | translate}}<span class="item-note">{{getVariableDataFromObject(singleproduct.product,'Catalog_Number__c')}}</span>
+    </div>
+
+     <div class="item">
+        {{"product.generalInfo.is_bundle" | translate}} <span class="item-note">{{getVariableDataFromObject(singleproduct.product,'Is_Bundle__c')}}</span>
+    </div>
+
+     <div class="item">
+       {{"product.generalInfo.is_part" | translate}} <span class="item-note">{{getVariableDataFromObject(singleproduct.product,'Is_Part__c')}}</span>
+    </div>
+
+    <div class="item">
+       {{"product.generalInfo.repair_site" | translate}}<span class="item-note">{{getVariableDataFromObject(singleproduct.product,'Repair_Site__c')}}</span>
+    </div>
+
+    <div class="item">
+       {{"product.generalInfo.radiation_emitting_device" | translate}} <span class="item-note">{{getVariableDataFromObject(singleproduct.product,'Radiation_Emitting_Device__c')}}</span>
+    </div>
+
+    <div class="item">
+        {{"product.generalInfo.service_maintainance_contact" | translate}}<span class="item-note"><a href="#/app/servicecontract/{{singleproduct.product.MedConnect__Service_Maintenance_Contract__r.Id}}">{{singleproduct.product.MedConnect__Service_Maintenance_Contract__r.Name}}</a></span>
+    </div>
+
+    <div class="item">
+       {{"product.generalInfo.product_part_number" | translate}}<span class="item-note">{{getVariableDataFromObject(singleproduct.product,'Product_Part_Number__c')}}</span>
+    </div>
+
+    <div class="item">
+      {{"product.generalInfo.can_user_return_impacted_product" | translate}} <span class="item-note">{{getVariableDataFromObject(singleproduct.product,'is_ready_to_return__c')}}</span>
+    </div>
+
+    <div class="item">
+        {{"product.generalInfo.product_recall_required" | translate}} <span class="item-note">{{getVariableDataFromObject(singleproduct.product,'Product_Recall_Required__c')}}</span>
+    </div>
+
+    <div class="item">
+      {{"product.generalInfo.device_licence_no" | translate}} <span class="item-note">{{getVariableDataFromObject(singleproduct.product,'Device_License_No__c')}}</span>
+    </div>
+</div>
+</ion-scroll>

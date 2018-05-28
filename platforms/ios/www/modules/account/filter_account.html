@@ -1,0 +1,21 @@
+<ion-modal-view>
+   <ion-header-bar>
+       <button ng-click="closeModal()" class="button button-icon icon"> <i class="ion-close size-12" ></i></button>
+      <h1 class = "title" style="padding-left: 30px;">{{"account.filter-account.filter" | translate}}</h1>
+   </ion-header-bar>
+	
+   <ion-content>
+      <ion-list>
+        <ion-radio ng-model="accountlist.filterContact" ng-value="1">1 {{"account.filter-account.day" | translate}}</ion-radio>
+        <ion-radio ng-model="accountlist.filterContact" ng-value="3">3 {{"account.filter-account.days" | translate}}</ion-radio>
+        <ion-radio ng-model="accountlist.filterContact" ng-value="7">7 {{"account.filter-account.days" | translate}}</ion-radio>
+        <ion-radio ng-model="accountlist.filterContact" ng-value="15">15 {{"account.filter-account.days" | translate}}</ion-radio>
+        <ion-radio ng-model="accountlist.filterContact" ng-value="30">30 {{"account.filter-account.days" | translate}}</ion-radio>
+        <ion-radio ng-model="accountlist.filterContact" ng-value="60">60 {{"account.filter-account.days" | translate}}</ion-radio>
+  		</ion-list>
+      <div class="row filterBtn">
+        <button class="button button-block button-positive" style="margin: auto;" ng-click="accountlist.filterAccountList()">{{"account.filter-account.filter" | translate}}</button>
+      </div>
+   </ion-content>
+   
+</ion-modal-view>

@@ -1,0 +1,203 @@
+<ion-view title='{{"workorder.add_activity.workOrder" | translate}}'>
+    <ion-nav-buttons side="right">
+        <div syncup></div>
+        <div offline></div>
+    </ion-nav-buttons>
+    <ion-content>
+        <div class="add-activity">
+            <div class="row detail-top-blue-banner white-btm-border contact-detail">
+                <div class="col">
+                    <h3 ng-bind="(activity.activityId && activity.activityId != 'null') ? ('workorder.add_activity.editActivity' | translate): ('workorder.add_activity.newActivity' | translate)"></h3>
+                </div>
+            </div>
+            <form name="activity.activityForm" novalidate="" ng-submit="activity.activitySave(activity.activityForm)">
+                <div class="row">
+                <div class="col">
+                    <div class="col">{{"workorder.add_activity.workOrder" | translate}}</div>
+                    <div class="col">{{::activity.workOrderName}}</div>
+                </div>
+                <div class="col">
+                    <div class="col">{{"workorder.add_activity.assignedToPrimary" | translate}}</div>
+                    <div class="col ">{{::activity.userName}}</div>
+                </div>
+                </div>
+                <div class="row">
+                    <div class="col images">
+                        <select name="type" id="type" class="select_parent_width custom-select" ng-model="activity.act.type">
+                            <option value="">{{"workorder.add_activity.type" | translate}}</option>
+                            <option value="Decontamination">{{"workorder.add_activity.decontamination" | translate}}</option>
+                            <option value="PM">{{"workorder.add_activity.pm" | translate}}</option>
+                            <option value="CM">{{"workorder.add_activity.cm" | translate}}</option>
+                            <option value="ISO Validation">{{"workorder.add_activity.isoValidation" | translate}}</option>
+                            <option value="Upgrade/TB">{{"workorder.add_activity.upgradeTB" | translate}}</option>
+                            <option value="Qualification">{{"workorder.add_activity.qualification" | translate}}</option>
+                            <option value="Refreshment">{{"workorder.add_activity.refreshment" | translate}}</option>
+                            <option value="Installation">{{"workorder.add_activity.installation" | translate}}</option>
+                            <option value="Removal">{{"workorder.add_activity.rewmoval" | translate}}</option>
+                            <option value="Relocation">{{"workorder.add_activity.relocation" | translate}}</option>
+                            <option value="Remote Support">{{"workorder.add_activity.remoteSupport" | translate}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col images">
+                        <select name="priority" id="priority" class="select_parent_width custom-select" ng-model="activity.act.priority">
+                            <option value="">{{"workorder.add_activity.priority" | translate}}</option>
+                            <option value="High">{{"workorder.add_activity.high" | translate}}</option>
+                            <option value="Medium">{{"workorder.add_activity.medium" | translate}}</option>
+                            <option value="Low">{{"workorder.add_activity.low" | translate}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col images">
+                        <select name="status" id="status" class="select_parent_width custom-select" ng-model="activity.act.status">
+                            <option value="">{{"workorder.add_activity.status" | translate}}</option>
+                            <option value="Not Started">{{"workorder.add_activity.notStarted" | translate}}</option>
+                            <option value="In Progress">{{"workorder.add_activity.inProgress" | translate}}</option>
+                            <option value="Complete">{{"workorder.add_activity.complete" | translate}}</option>
+                            <option value="Assigned">{{"workorder.add_activity.assigned" | translate}}</option>
+                            <option value="Accepted">{{"workorder.add_activity.accepted" | translate}}</option>
+                            <option value="Approved">{{"workorder.add_activity.approved" | translate}}</option>
+                            <option value="Cancelled">{{"workorder.add_activity.cancelled" | translate}}</option>
+                            <option value="Rejected">{{"workorder.add_activity.rejected" | translate}}</option>
+                            <option value="Pending Approval">{{"workorder.add_activity.pendingApproval" | translate}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="row">
+                        <label class="item-input item-floating-label prodLabel" ng-class="{ 'has-error' : activity.activityForm.activity_template.$invalid && activity.activityForm.activity_template.$dirty}">
+                            <span class="input-label">{{"workorder.add_activity.activityTemplate" | translate}}</span>
+                            <input type="text" id="activity_template" name="activity_template" ng-model="activity.act.selected_at_name" class="activity_template" ng-disabled="true">
+                            <input type="hidden" ng-model="activity.act.selected_at_id" />
+                        </label>
+                        <button class="button-icon icon" ng-click="activity.loadActivityTemplate()"><i class="ion-search size-24" ></i></button>
+                    </div>
+                    <div class="row row1">
+                        <label class="item-input item-floating-label prodLabel" ng-class="{ 'has-error' : activity.activityForm.third_party.$invalid && activity.activityForm.third_party.$dirty}">
+                            <span class="input-label">{{"workorder.add_activity.thirdPartyDepot" | translate}}</span>
+                            <input type="text" id="third_party" name="third_party" ng-model="activity.act.selected_tpd_name" class="third_party" ng-disabled="true">
+                            <input type="hidden" ng-model="activity.act.selected_tpd_id" />
+                        </label>
+                        <button class="button-icon icon" ng-click="activity.loadThirdPartyDepot()"><i class="ion-search size-24" ></i></button>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col">
+                        <label class="item-input item-floating-label" ng-class="{ 'has-error' : activity.activityForm.start_time.$invalid && activity.activityForm.start_time.$dirty}">
+                            <span class="input-label">{{"workorder.add_activity.startTime" | translate}}</span>
+                            <input type="datetime-local" name="start_time" ng-model="activity.act.start_time" required>
+                        </label>
+                        <div class="form-errors" ng-messages="activity.activityForm.start_time.$error" ng-show='activity.activityForm.$submitted || activity.activityForm.start_time.$dirty'>
+                            <div class="form-error" ng-message="required">{{"workorder.add_activity.requiredField" | translate}}<i class="ion-information-circled"></i> </div>
+                        </div>
+                    </div>
+                    <div class="col"></div>
+                </div>
+                <div class="row">
+                    <div class="col act-checkbox">
+                        <ion-checkbox ng-model="activity.act.billable">{{"workorder.add_activity.billable" | translate}}</ion-checkbox>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <label class="item-input item-floating-label" ng-class="{ 'has-error' : activity.activityForm.travel_time.$invalid && activity.activityForm.travel_time.$dirty}">
+                            <span class="input-label">{{"workorder.add_activity.travelTime" | translate}}</span>
+                            <input type="tel" name="travel_time" ng-model="activity.act.travel_time" ng-pattern="/^[0-9]{1,7}$/">
+                        </label>
+                        <div class="form-errors" ng-messages="activity.activityForm.travel_time.$error" ng-show='activity.activityForm.$submitted || activity.activityForm.travel_time.$dirty'>
+                            <div class="form-error" ng-message="pattern">{{"workorder.add_activity.notValidNum" | translate}}<i class="ion-information-circled"></i> </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <label class="item-input item-floating-label" ng-class="{ 'has-error' : activity.activityForm.labor_time.$invalid && activity.activityForm.labor_time.$dirty}">
+                            <span class="input-label">{{"workorder.add_activity.laborTime" | translate}}</span>
+                            <input type="tel" name="labor_time" ng-model="activity.act.labor_time" ng-pattern="/^[0-9]{1,7}$/">
+                        </label>
+                        <div class="form-errors" ng-messages="activity.activityForm.labor_time.$error" ng-show='activity.activityForm.$submitted || activity.activityForm.labor_time.$dirty'>
+                            <div class="form-error" ng-message="pattern">{{"workorder.add_activity.notValidNum" | translate}}<i class="ion-information-circled"></i> </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <label class="item-input item-floating-label" ng-class="{ 'has-error' : activity.activityForm.wait_time.$invalid && activity.activityForm.wait_time.$dirty}">
+                            <span class="input-label">{{"workorder.add_activity.waitTime" | translate}}</span>
+                            <input type="tel" name="wait_time" ng-model="activity.act.wait_time" ng-pattern="/^[0-9]{1,7}$/">
+                        </label>
+                        <div class="form-errors" ng-messages="activity.activityForm.wait_time.$error" ng-show='activity.activityForm.$submitted || activity.activityForm.wait_time.$dirty'>
+                            <div class="form-error" ng-message="pattern">{{"workorder.add_activity.notValidNum" | translate}}<i class="ion-information-circled"></i> </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <label class="item-input item-floating-label" ng-class="{ 'has-error' : activity.activityForm.training_time.$invalid && activity.activityForm.training_time.$dirty}">
+                            <span class="input-label">{{"workorder.add_activity.trainingTime" | translate}}</span>
+                            <input type="tel" name="training_time" ng-model="activity.act.training_time" ng-pattern="/^[0-9]{1,7}$/">
+                        </label>
+                        <div class="form-errors" ng-messages="activity.activityForm.training_time.$error" ng-show='activity.activityForm.$submitted || activity.activityForm.training_time.$dirty'>
+                            <div class="form-error" ng-message="pattern">{{"workorder.add_activity.notValidNum" | translate}}<i class="ion-information-circled"></i> </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <label class="item-input item-floating-label" ng-class="{ 'has-error' : activity.activityForm.additional_time.$invalid && activity.activityForm.additional_time.$dirty}">
+                            <span class="input-label">{{"workorder.add_activity.additionalTime" | translate}}</span>
+                            <input type="tel" name="additional_time" ng-model="activity.act.additional_time" ng-pattern="/^[0-9]{1,7}$/">
+                        </label>
+                        <div class="form-errors" ng-messages="activity.activityForm.additional_time.$error" ng-show='activity.activityForm.$submitted || activity.activityForm.additional_time.$dirty'>
+                            <div class="form-error" ng-message="required">{{"workorder.add_activity.requiredField" | translate}}<i class="ion-information-circled"></i> </div>
+                            <div class="form-error" ng-message="pattern">{{"workorder.add_activity.notValidNum" | translate}}<i class="ion-information-circled"></i> </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <label class="item-input item-floating-label" ng-class="{ 'has-error' : activity.activityForm.outside_time.$invalid && activity.activityForm.outside_time.$dirty}">
+                            <span class="input-label">{{"workorder.add_activity.timeOutsideWorkHrs" | translate}}</span>
+                            <input type="tel" name="outside_time" ng-model="activity.act.outside_time" ng-pattern="/^[0-9]{1,7}$/">
+                        </label>
+                        <div class="form-errors" ng-messages="activity.activityForm.outside_time.$error" ng-show='activity.activityForm.$submitted || activity.activityForm.outside_time.$dirty'>
+                            <div class="form-error" ng-message="pattern">{{"workorder.add_activity.notValidNum" | translate}}<i class="ion-information-circled"></i> </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <label class="item-input item-floating-label">
+                            <span class="input-label">{{"workorder.add_activity.description" | translate}}</span>
+                            <textarea name="description" id="" cols="30" rows="5" ng-model="activity.act.description" ng-maxlength="240"></textarea>
+                        </label>
+                        <div class="form-errors" ng-messages="activity.activityForm.description.$error" ng-show='activity.activityForm.$submitted || activity.activityForm.description.$dirty'>
+                            <div class="form-error" ng-message="maxlength">{{"workorder.add_activity.valueTooLong" | translate}}<i class="ion-information-circled"></i> </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" ng-if="activity.activityId.length > 4 && activity.activityId != 'null'">
+                    <div class="col">
+                        <label class="item-input item-floating-label">
+                            <span class="input-label">{{"workorder.add_activity.reasonForChange" | translate}}</span>
+                            <textarea name="change_reason" id="" cols="30" rows="5" ng-required="true" ng-model="activity.act.change_reason" ng-maxlength="240"></textarea>
+                        </label>
+                        <div class="form-errors" ng-messages="activity.activityForm.change_reason.$error" ng-show='activity.activityForm.$submitted || activity.activityForm.change_reason.$dirty'>
+                            <div class="form-error" ng-message="required">{{"workorder.add_activity.requiredField" | translate}}<i class="ion-information-circled"></i> </div>
+                            <div class="form-error" ng-message="maxlength">{{"workorder.add_activity.valueTooLong" | translate}}<i class="ion-information-circled"></i> </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <input type="submit" class="button button-positive" value='{{"workorder.add_activity.save" | translate}}'>
+                    </div>
+                    <div class="col">
+                        <div class="button button-outline  button-assertive" ng-click="activity.backToWorkOrder()">
+                            {{"workorder.add_activity.cancel" | translate}}
+                        </div>
+                    </div>
+                    <div class="col"></div>
+                    <div class="col"></div>
+                </div>
+            </form>
+        </div>
+    </ion-content>
+</ion-view>

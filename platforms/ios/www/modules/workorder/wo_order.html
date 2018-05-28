@@ -1,0 +1,25 @@
+<div class="wo-order">
+    <ion-list ng-show="singleWorkOrder.orders.length > 0">
+        <ion-item class="cntHdr">
+            <div class="row">
+                <div class="col"><b>{{"workorder.wo_order.name" | translate}}</b></div>
+                <div class="col"><b>{{"workorder.wo_order.status" | translate}}</b></div>
+                <div class="col"><b>{{"workorder.wo_order.delivery-date" | translate}}</b></div>
+            </div>
+        </ion-item>
+        <ion-scroll direction="y" class="scroll-height">
+            <ion-item ng-repeat="order in singleWorkOrder.orders">
+                <div class="row">
+                    <div class="col"><a href="#/app/order/{{order.Id}}">{{order.Name}}</a></div>
+                    <div class="col">{{order.MedConnect__Status__c}}</div>
+                    <div class="col"> {{order.MedConnect__Delivery_Date__c}}</div>
+                </div>
+            </ion-item>
+        </ion-scroll>
+    </ion-list>
+    <div class="card" ng-show="singleWorkOrder.orders.length == 0">
+        <div class="item item-text-wrap">
+            {{"workorder.wo_order.no-orders-found" | translate}}
+        </div>
+    </div>
+</div>
